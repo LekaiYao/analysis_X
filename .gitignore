@@ -1,0 +1,63 @@
+# =====================
+# Python
+# =====================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.ipynb_checkpoints
+*.egg-info/
+*.egg
+*.log
+
+# =====================
+# C++
+# =====================
+*.o
+*.obj
+*.so
+*.out
+*.exe
+*.a
+*.dylib
+*.dll
+*.stackdump
+
+# dir
+build/
+bin/
+debug/
+release/
+
+# =====================
+# ROOT
+# =====================
+*.root
+*.ps
+*.pdf
+*.C_bak
+*.d
+*.pcm
+
+# =====================
+# tmp / buffer
+# =====================
+*.tmp
+*~
+*.swp
+.DS_Store
+.vscode/
+.idea/
+
+# =====================
+# self-defined folders
+# =====================
+output/
+results/
+plots/
+figures/
+
+# =====================
+# Jupyter Notebook
+# =====================
+.ipynb_checkpoints
