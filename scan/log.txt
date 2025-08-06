@@ -1,0 +1,237 @@
+nohup: ignoring input
+Processing variable: B_mass
+
+Processing plot_B_mass.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_mass_compare.pdf has been created
+Processing variable: B_pt
+
+Processing plot_B_pt.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_pt_compare.pdf has been created
+Processing variable: B_y
+
+Processing plot_B_y.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_y_compare.pdf has been created
+Processing variable: B_vtxX
+
+Processing plot_B_vtxX.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_vtxX_compare.pdf has been created
+Processing variable: B_vtxY
+
+Processing plot_B_vtxY.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_vtxY_compare.pdf has been created
+Processing variable: B_d0
+
+Processing plot_B_d0.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_d0_compare.pdf has been created
+Processing variable: B_d0Err
+
+Processing plot_B_d0Err.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_d0Err_compare.pdf has been created
+Processing variable: B_dxyz
+
+Processing plot_B_dxyz.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_dxyz_compare.pdf has been created
+Processing variable: B_dxyzErr
+
+Processing plot_B_dxyzErr.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_dxyzErr_compare.pdf has been created
+Processing variable: B_chi2ndf
+
+Processing plot_B_chi2ndf.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_chi2ndf_compare.pdf has been created
+Processing variable: B_chi2cl
+
+Processing plot_B_chi2cl.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_chi2cl_compare.pdf has been created
+Processing variable: B_dtheta
+
+Processing plot_B_dtheta.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_dtheta_compare.pdf has been created
+Processing variable: B_cos_dtheta
+
+Processing plot_B_cos_dtheta.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_cos_dtheta_compare.pdf has been created
+Processing variable: B_alpha
+
+Processing plot_B_alpha.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_alpha_compare.pdf has been created
+Processing variable: B_svpvDistance
+
+Processing plot_B_svpvDistance.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_svpvDistance_compare.pdf has been created
+Processing variable: B_svpvDisErr
+
+Processing plot_B_svpvDisErr.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_svpvDisErr_compare.pdf has been created
+Processing variable: B_svpvDistance_2D
+
+Processing plot_B_svpvDistance_2D.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_svpvDistance_2D_compare.pdf has been created
+Processing variable: B_svpvDisErr_2D
+
+Processing plot_B_svpvDisErr_2D.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_svpvDisErr_2D_compare.pdf has been created
+Processing variable: B_norm_svpvDistance
+
+Processing plot_B_norm_svpvDistance.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_norm_svpvDistance_compare.pdf has been created
+Processing variable: B_norm_svpvDistance_2D
+
+Processing plot_B_norm_svpvDistance_2D.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_norm_svpvDistance_2D_compare.pdf has been created
+Processing variable: B_Qvalue
+
+Processing plot_B_Qvalue.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_Qvalue_compare.pdf has been created
+Processing variable: B_Qvalueuj
+
+Processing plot_B_Qvalueuj.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_Qvalueuj_compare.pdf has been created
+Processing variable: B_Qvaluemumu
+
+Processing plot_B_Qvaluemumu.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_Qvaluemumu_compare.pdf has been created
+Processing variable: B_trk1Pt
+
+Processing plot_B_trk1Pt.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_trk1Pt_compare.pdf has been created
+Processing variable: B_trk2Pt
+
+Processing plot_B_trk2Pt.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_trk2Pt_compare.pdf has been created
+Processing variable: B_trkPtimb
+
+Processing plot_B_trkPtimb.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_trkPtimb_compare.pdf has been created
+Processing variable: B_trk1Eta
+
+Processing plot_B_trk1Eta.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_trk1Eta_compare.pdf has been created
+Processing variable: B_trk2Eta
+
+Processing plot_B_trk2Eta.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_trk2Eta_compare.pdf has been created
+Processing variable: B_trk1PtErr
+
+Processing plot_B_trk1PtErr.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_trk1PtErr_compare.pdf has been created
+Processing variable: B_trk2PtErr
+
+Processing plot_B_trk2PtErr.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_trk2PtErr_compare.pdf has been created
+Processing variable: B_trk1Dz
+
+Processing plot_B_trk1Dz.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_trk1Dz_compare.pdf has been created
+Processing variable: B_trk2Dz
+
+Processing plot_B_trk2Dz.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_trk2Dz_compare.pdf has been created
+Processing variable: B_trk1DzError
+
+Processing plot_B_trk1DzError.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_trk1DzError_compare.pdf has been created
+Processing variable: B_trk2DzError
+
+Processing plot_B_trk2DzError.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_trk2DzError_compare.pdf has been created
+Processing variable: B_trk1Dxy
+
+Processing plot_B_trk1Dxy.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_trk1Dxy_compare.pdf has been created
+Processing variable: B_trk2Dxy
+
+Processing plot_B_trk2Dxy.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_trk2Dxy_compare.pdf has been created
+Processing variable: B_norm_trk1Dxy
+
+Processing plot_B_norm_trk1Dxy.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_norm_trk1Dxy_compare.pdf has been created
+Processing variable: B_norm_trk2Dxy
+
+Processing plot_B_norm_trk2Dxy.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_norm_trk2Dxy_compare.pdf has been created
+Processing variable: B_trk1DxyError
+
+Processing plot_B_trk1DxyError.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_trk1DxyError_compare.pdf has been created
+Processing variable: B_trk2DxyError
+
+Processing plot_B_trk2DxyError.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_trk2DxyError_compare.pdf has been created
+Processing variable: B_trk1nPixelLayer
+
+Processing plot_B_trk1nPixelLayer.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_trk1nPixelLayer_compare.pdf has been created
+Processing variable: B_trk2nPixelLayer
+
+Processing plot_B_trk2nPixelLayer.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_trk2nPixelLayer_compare.pdf has been created
+Processing variable: B_trk1nStripLayer
+
+Processing plot_B_trk1nStripLayer.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_trk1nStripLayer_compare.pdf has been created
+Processing variable: B_trk2nStripLayer
+
+Processing plot_B_trk2nStripLayer.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_trk2nStripLayer_compare.pdf has been created
+Processing variable: B_trk1Chi2ndf
+
+Processing plot_B_trk1Chi2ndf.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_trk1Chi2ndf_compare.pdf has been created
+Processing variable: B_trk2Chi2ndf
+
+Processing plot_B_trk2Chi2ndf.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_trk2Chi2ndf_compare.pdf has been created
+Processing variable: B_trk1dR
+
+Processing plot_B_trk1dR.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_trk1dR_compare.pdf has been created
+Processing variable: B_trk2dR
+
+Processing plot_B_trk2dR.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_trk2dR_compare.pdf has been created
+Processing variable: B_tktkmass
+
+Processing plot_B_tktkmass.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_tktkmass_compare.pdf has been created
+Processing variable: B_tktkmassKK
+
+Processing plot_B_tktkmassKK.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_tktkmassKK_compare.pdf has been created
+Processing variable: B_tktkvProb
+
+Processing plot_B_tktkvProb.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_tktkvProb_compare.pdf has been created
+Processing variable: B_tktkpt
+
+Processing plot_B_tktkpt.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_tktkpt_compare.pdf has been created
+Processing variable: B_doubletmass
+
+Processing plot_B_doubletmass.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_doubletmass_compare.pdf has been created
+Processing variable: B_mu1pt
+
+Processing plot_B_mu1pt.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_mu1pt_compare.pdf has been created
+Processing variable: B_mu2pt
+
+Processing plot_B_mu2pt.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_mu2pt_compare.pdf has been created
+Processing variable: B_mumumass
+
+Processing plot_B_mumumass.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_mumumass_compare.pdf has been created
+Processing variable: B_ujmass
+
+Processing plot_B_ujmass.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_ujmass_compare.pdf has been created
+Processing variable: B_ujvProb
+
+Processing plot_B_ujvProb.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_ujvProb_compare.pdf has been created
+Processing variable: B_gen
+
+Processing plot_B_gen.C...
+Info in <TCanvas::Print>: pdf file output_scan/B_gen_compare.pdf has been created
