@@ -13,8 +13,8 @@ using namespace RooFit;
 
 void integral(){
     RooRealVar B_mass("B_mass", "B_mass", 3.6, 3.8);
-    RooRealVar c1("c1", "coefficient #1", 0.00734315);
-	RooRealVar c2("c2", "coefficient #2", -0.318798);
+    RooRealVar c1("c1", "coefficient #1", 0.167209);
+	RooRealVar c2("c2", "coefficient #2", -0.0280001);
     RooChebychev bkg("bkg", "Chebychev background", B_mass, RooArgList(c1, c2));
     // 假设 B_mass 是在外部定义的 RooRealVar
     B_mass.setRange("fullregion", 3.6, 3.8);

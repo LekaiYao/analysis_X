@@ -19,7 +19,7 @@ TMVA.Tools.Instance()               #need to run this two to load up TMVA
 TMVA.PyMethodBase.PyInitialize()    #in PyROOT
 
 #input PATH
-dir = "/user/u/u25lekai/work/analysis_B/selection/X_ppRef/root_files/"
+dir = "/user/u/u25lekai/work/analysis_X/selection/root_files/"
 #data_file = "dataSideband_Bu.root"
 data_file = "sideband_PSI.root"
 mc_file = "MC_PSI2S.root"
@@ -58,14 +58,10 @@ dataloader = TMVA.DataLoader('dataset_' + input)
 # features to train the BDT
 # you could add the variables you want here
 dataloader.AddVariable("B_alpha")
-dataloader.AddVariable("B_trk1dR")
-dataloader.AddVariable("B_trk2dR")
-dataloader.AddVariable("B_trk1Pt")
-dataloader.AddVariable("B_trk2Pt")
-#dataloader.AddVariable("B_norm_trk1Dxy")
-#dataloader.AddVariable("B_norm_trk2Dxy")
-dataloader.AddVariable("B_norm_svpvDistance_2D")
-dataloader.AddVariable("B_cos_dtheta")
+dataloader.AddVariable("B_chi2cl")
+dataloader.AddVariable("B_Qvalue")
+dataloader.AddVariable("B_norm_trk1Dxy")
+dataloader.AddVariable("B_norm_svpvDistance")
 
 
 signalWeight     = 1.0        #MC/signal

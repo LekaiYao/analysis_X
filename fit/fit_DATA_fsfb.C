@@ -20,7 +20,7 @@
 using namespace RooFit;
 
 void fit_DATA_fsfb() {
-    TFile *f = TFile::Open("/user/u/u25lekai/work/analysis_B/TMVA/TMVA_PSI/DATA_XPSI_BDT.root");
+    TFile *f = TFile::Open("/user/u/u25lekai/work/analysis_X/TMVA/DATA_XPSI_BDT.root");
     TTree *tree = (TTree*)f->Get("tree");
     
     float lowBmass=3.6,highBmass=3.8,lowBDTscore=-1.0,highBDTscore=1.0;
@@ -36,7 +36,7 @@ void fit_DATA_fsfb() {
 		vars.add(B_mass);
 		vars.add(BDT_score);
     RooDataSet data("data", "data", vars,Import(*tree));
-	RooDataSet* newdata = (RooDataSet*)data.reduce("(BDT_score>0.1)");
+	RooDataSet* newdata = (RooDataSet*)data.reduce("(BDT_score>0.0)");
 
 	//signal of PSI2S
 	RooRealVar mean("mean","mean",3.69,3.66,3.72);
@@ -99,7 +99,7 @@ void fit_DATA_fsfb() {
 	frame_Bmass->Draw();
 	leg1.DrawClone();
 
-	c_Bmass->SaveAs("./output_fit/1Dfitpsi2Smass_datafsfb_v2.pdf");
+	c_Bmass->SaveAs("./output_BDT/1Dfitpsi2Smass_datafsfb_v1.pdf");
 
     f->Close();
 }
