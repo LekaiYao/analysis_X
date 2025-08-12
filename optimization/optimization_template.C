@@ -11,10 +11,10 @@
 
 
 void optimization_@VAR@() {
-    TFile *file_data = TFile::Open("/user/u/u25lekai/work/analysis_X/TMVA/sideband_PSI_BDT.root");
+    TFile *file_data = TFile::Open("/user/u/u25lekai/work/analysis_X/TMVA/sideband_PSI_BDT_test3.root");
     TTree *tree_data = (TTree*)file_data->Get("tree");
 
-    TFile *file_MC = TFile::Open("/user/u/u25lekai/work/analysis_X/TMVA/MC_PSI2S_BDT.root");
+    TFile *file_MC = TFile::Open("/user/u/u25lekai/work/analysis_X/TMVA/MC_PSI2S_BDT_test3.root");
     TTree *tree_MC = (TTree*)file_MC->Get("tree");
 
     TCanvas *c1 = new TCanvas("c1", "Entry Scan", 800, 600);
@@ -28,7 +28,7 @@ void optimization_@VAR@() {
     TString var_name = "@VAR@";
     Double_t n_data_l, n_MC_l, FOM_l, n_data_g, n_MC_g, FOM_g;//l for less than, g for greater than
     TString flag = "";
-    Double_t fs = 0.40153438, fb = 0.445537;
+    Double_t fs = 0.26941673, fb = 0.540249;
     Double_t FOM_max_l = 0, cut_best_l = min, FOM_max_g = 0, cut_best_g = min;
 
     TGraph *graph_l = new TGraph(n_points);
@@ -88,9 +88,9 @@ void optimization_@VAR@() {
     }
 
 
-    c1->SaveAs(Form("./FOM/%s_%d.pdf", var_name.Data(), nbin));
+    c1->SaveAs(Form("./FOM/%s_%d_test3.pdf", var_name.Data(), nbin));
 
-    std::ofstream fout("FOM/FOM_summary.txt", std::ios::app); 
+    std::ofstream fout("FOM/FOM_summary_test3.txt", std::ios::app); 
     if (fout.is_open()) {
         if (flag == "g"){
             fout

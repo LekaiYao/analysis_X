@@ -1,0 +1,273 @@
+nohup: ignoring input
+DataSetInfo              : [dataset_test3] : Added class "Signal"
+                         : Add Tree tree of type Signal with 3789 events
+DataSetInfo              : [dataset_test3] : Added class "Background"
+                         : Add Tree tree of type Background with 377899 events
+Factory                  : Booking method: [1mBDTs[0m
+                         : 
+BDTs                     : [dataset_test3] : Create Transformation "Decorrelate" with events from all classes.
+                         : 
+                         : Transformation, Variable selection : 
+                         : Input : variable 'B_alpha' <---> Output : variable 'B_alpha'
+                         : Input : variable 'B_chi2cl' <---> Output : variable 'B_chi2cl'
+                         : Input : variable 'B_Qvalueuj' <---> Output : variable 'B_Qvalueuj'
+                         : Input : variable 'B_norm_trk1Dxy' <---> Output : variable 'B_norm_trk1Dxy'
+                         : Input : variable 'B_norm_svpvDistance' <---> Output : variable 'B_norm_svpvDistance'
+                         : Rebuilding Dataset dataset_test3
+                         : Building event vectors for type 2 Signal
+                         : Dataset[dataset_test3] :  create input formulas for tree tree
+                         : Building event vectors for type 2 Background
+                         : Dataset[dataset_test3] :  create input formulas for tree tree
+DataSetFactory           : [dataset_test3] : Number of events in input trees
+                         : 
+                         : 
+                         : Number of training and testing events
+                         : ---------------------------------------------------------------------------
+                         : Signal     -- training events            : 2652
+                         : Signal     -- testing events             : 1137
+                         : Signal     -- training and testing events: 3789
+                         : Background -- training events            : 264529
+                         : Background -- testing events             : 113370
+                         : Background -- training and testing events: 377899
+                         : 
+DataSetInfo              : Correlation matrix (Signal):
+                         : -----------------------------------------------------------------------------------
+                         :                      B_alpha B_chi2cl B_Qvalueuj B_norm_trk1Dxy B_norm_svpvDistance
+                         :             B_alpha:  +1.000   -0.015     +0.046         -0.030              -0.009
+                         :            B_chi2cl:  -0.015   +1.000     -0.024         +0.025              -0.071
+                         :          B_Qvalueuj:  +0.046   -0.024     +1.000         +0.017              -0.006
+                         :      B_norm_trk1Dxy:  -0.030   +0.025     +0.017         +1.000              +0.001
+                         : B_norm_svpvDistance:  -0.009   -0.071     -0.006         +0.001              +1.000
+                         : -----------------------------------------------------------------------------------
+DataSetInfo              : Correlation matrix (Background):
+                         : -----------------------------------------------------------------------------------
+                         :                      B_alpha B_chi2cl B_Qvalueuj B_norm_trk1Dxy B_norm_svpvDistance
+                         :             B_alpha:  +1.000   +0.013     -0.003         +0.003              +0.035
+                         :            B_chi2cl:  +0.013   +1.000     -0.039         +0.008              +0.024
+                         :          B_Qvalueuj:  -0.003   -0.039     +1.000         -0.002              -0.024
+                         :      B_norm_trk1Dxy:  +0.003   +0.008     -0.002         +1.000              +0.014
+                         : B_norm_svpvDistance:  +0.035   +0.024     -0.024         +0.014              +1.000
+                         : -----------------------------------------------------------------------------------
+DataSetFactory           : [dataset_test3] :  
+                         : 
+Factory                  : [1mTrain all methods[0m
+Factory                  : [dataset_test3] : Create Transformation "I" with events from all classes.
+                         : 
+                         : Transformation, Variable selection : 
+                         : Input : variable 'B_alpha' <---> Output : variable 'B_alpha'
+                         : Input : variable 'B_chi2cl' <---> Output : variable 'B_chi2cl'
+                         : Input : variable 'B_Qvalueuj' <---> Output : variable 'B_Qvalueuj'
+                         : Input : variable 'B_norm_trk1Dxy' <---> Output : variable 'B_norm_trk1Dxy'
+                         : Input : variable 'B_norm_svpvDistance' <---> Output : variable 'B_norm_svpvDistance'
+Factory                  : [dataset_test3] : Create Transformation "D" with events from all classes.
+                         : 
+                         : Transformation, Variable selection : 
+                         : Input : variable 'B_alpha' <---> Output : variable 'B_alpha'
+                         : Input : variable 'B_chi2cl' <---> Output : variable 'B_chi2cl'
+                         : Input : variable 'B_Qvalueuj' <---> Output : variable 'B_Qvalueuj'
+                         : Input : variable 'B_norm_trk1Dxy' <---> Output : variable 'B_norm_trk1Dxy'
+                         : Input : variable 'B_norm_svpvDistance' <---> Output : variable 'B_norm_svpvDistance'
+Factory                  : [dataset_test3] : Create Transformation "P" with events from all classes.
+                         : 
+                         : Transformation, Variable selection : 
+                         : Input : variable 'B_alpha' <---> Output : variable 'B_alpha'
+                         : Input : variable 'B_chi2cl' <---> Output : variable 'B_chi2cl'
+                         : Input : variable 'B_Qvalueuj' <---> Output : variable 'B_Qvalueuj'
+                         : Input : variable 'B_norm_trk1Dxy' <---> Output : variable 'B_norm_trk1Dxy'
+                         : Input : variable 'B_norm_svpvDistance' <---> Output : variable 'B_norm_svpvDistance'
+Factory                  : [dataset_test3] : Create Transformation "G" with events from all classes.
+                         : 
+                         : Transformation, Variable selection : 
+                         : Input : variable 'B_alpha' <---> Output : variable 'B_alpha'
+                         : Input : variable 'B_chi2cl' <---> Output : variable 'B_chi2cl'
+                         : Input : variable 'B_Qvalueuj' <---> Output : variable 'B_Qvalueuj'
+                         : Input : variable 'B_norm_trk1Dxy' <---> Output : variable 'B_norm_trk1Dxy'
+                         : Input : variable 'B_norm_svpvDistance' <---> Output : variable 'B_norm_svpvDistance'
+Factory                  : [dataset_test3] : Create Transformation "D" with events from all classes.
+                         : 
+                         : Transformation, Variable selection : 
+                         : Input : variable 'B_alpha' <---> Output : variable 'B_alpha'
+                         : Input : variable 'B_chi2cl' <---> Output : variable 'B_chi2cl'
+                         : Input : variable 'B_Qvalueuj' <---> Output : variable 'B_Qvalueuj'
+                         : Input : variable 'B_norm_trk1Dxy' <---> Output : variable 'B_norm_trk1Dxy'
+                         : Input : variable 'B_norm_svpvDistance' <---> Output : variable 'B_norm_svpvDistance'
+TFHandler_Factory        :            Variable                   Mean                   RMS           [        Min                   Max ]
+                         : ------------------------------------------------------------------------------------------------------------------
+                         :             B_alpha:               1.5417               1.1411   [           0.00040896               3.1403 ]
+                         :            B_chi2cl:              0.42528              0.31288   [            0.0050002               1.0000 ]
+                         :          B_Qvalueuj:              0.17522              0.10659   [             -0.14814              0.49998 ]
+                         :      B_norm_trk1Dxy:              0.30902               18.506   [              -143.35               165.35 ]
+                         : B_norm_svpvDistance:               299.14               349.89   [             0.011878               5758.7 ]
+                         : ------------------------------------------------------------------------------------------------------------------
+                         : Preparing the Decorrelation transformation...
+TFHandler_Factory        :            Variable                   Mean                   RMS           [        Min                   Max ]
+                         : ------------------------------------------------------------------------------------------------------------------
+                         :             B_alpha:               1.3192               1.0000   [            -0.019592               2.7559 ]
+                         :            B_chi2cl:               1.3476               1.0000   [             -0.23323               3.2383 ]
+                         :          B_Qvalueuj:               1.7043               1.0000   [              -1.3784               4.7582 ]
+                         :      B_norm_trk1Dxy:            0.0051636               1.0000   [              -7.7510               8.9133 ]
+                         : B_norm_svpvDistance:              0.85478               1.0000   [           -0.0037982               16.459 ]
+                         : ------------------------------------------------------------------------------------------------------------------
+                         : Preparing the Principle Component (PCA) transformation...
+TFHandler_Factory        :            Variable                   Mean                   RMS           [        Min                   Max ]
+                         : ------------------------------------------------------------------------------------------------------------------
+                         :             B_alpha:          -1.1711e-09               349.89   [              -299.13               5459.5 ]
+                         :            B_chi2cl:           1.2498e-10               18.505   [              -164.83               143.52 ]
+                         :          B_Qvalueuj:           3.6814e-11               1.1404   [              -1.5249               1.6338 ]
+                         :      B_norm_trk1Dxy:           1.5443e-11              0.31281   [             -0.59056              0.49726 ]
+                         : B_norm_svpvDistance:           8.5882e-13              0.10647   [             -0.32637              0.33047 ]
+                         : ------------------------------------------------------------------------------------------------------------------
+                         : Preparing the Gaussian transformation...
+                         : Preparing the Decorrelation transformation...
+TFHandler_Factory        :            Variable                   Mean                   RMS           [        Min                   Max ]
+                         : ------------------------------------------------------------------------------------------------------------------
+                         :             B_alpha:            0.0034891               1.0000   [              -3.2472               5.9410 ]
+                         :            B_chi2cl:            0.0037229               1.0000   [              -3.1995               5.7980 ]
+                         :          B_Qvalueuj:            0.0037302               1.0000   [              -3.3314               5.7509 ]
+                         :      B_norm_trk1Dxy:            0.0031745               1.0000   [              -3.3168               5.7519 ]
+                         : B_norm_svpvDistance:          -0.00022166               1.0000   [              -5.8418               5.6966 ]
+                         : ------------------------------------------------------------------------------------------------------------------
+                         : Ranking input variables (method unspecific)...
+IdTransformation         : Ranking result (top variable is best ranked)
+                         : --------------------------------------------
+                         : Rank : Variable            : Separation
+                         : --------------------------------------------
+                         :    1 : B_norm_svpvDistance : 5.739e-01
+                         :    2 : B_norm_trk1Dxy      : 4.728e-01
+                         :    3 : B_alpha             : 2.816e-01
+                         :    4 : B_Qvalueuj          : 2.152e-01
+                         :    5 : B_chi2cl            : 4.847e-02
+                         : --------------------------------------------
+Factory                  : Train method: BDTs for Classification
+                         : 
+                         : Preparing the Decorrelation transformation...
+TFHandler_BDTs           :            Variable                   Mean                   RMS           [        Min                   Max ]
+                         : ------------------------------------------------------------------------------------------------------------------
+                         :             B_alpha:               1.3192               1.0000   [            -0.019592               2.7559 ]
+                         :            B_chi2cl:               1.3476               1.0000   [             -0.23323               3.2383 ]
+                         :          B_Qvalueuj:               1.7043               1.0000   [              -1.3784               4.7582 ]
+                         :      B_norm_trk1Dxy:            0.0051636               1.0000   [              -7.7510               8.9133 ]
+                         : B_norm_svpvDistance:              0.85478               1.0000   [           -0.0037982               16.459 ]
+                         : ------------------------------------------------------------------------------------------------------------------
+BDTs                     : #events: (reweighted) sig: 133590 bkg: 133590
+                         : #events: (unweighted) sig: 2652 bkg: 264529
+                         : Training 250 Decision Trees ... patience please
+0%, time left: unknown
+6%, time left: 84 sec
+13%, time left: 90 sec
+19%, time left: 100 sec
+25%, time left: 101 sec
+32%, time left: 97 sec
+38%, time left: 91 sec
+44%, time left: 84 sec
+50%, time left: 77 sec
+56%, time left: 68 sec
+63%, time left: 59 sec
+69%, time left: 50 sec
+75%, time left: 39 sec
+82%, time left: 29 sec
+88%, time left: 20 sec
+94%, time left: 9 sec
+                         : Elapsed time for training with 267181 events: 170 sec         
+BDTs                     : [dataset_test3] : Evaluation of BDTs on training sample (267181 events)
+0%, time left: unknown
+6%, time left: 7 sec
+12%, time left: 6 sec
+18%, time left: 6 sec
+25%, time left: 5 sec
+31%, time left: 5 sec
+37%, time left: 4 sec
+43%, time left: 4 sec
+50%, time left: 3 sec
+56%, time left: 3 sec
+62%, time left: 2 sec
+68%, time left: 2 sec
+75%, time left: 1 sec
+81%, time left: 1 sec
+87%, time left: 0 sec
+93%, time left: 0 sec
+                         : Elapsed time for evaluation of 267181 events: 7.68 sec       
+                         : Creating xml weight file: [0;36mdataset_test3/weights/TMVAClassification_BDTs.weights.xml[0m
+                         : Creating standalone class: [0;36mdataset_test3/weights/TMVAClassification_BDTs.class.C[0m
+                         : dataset_test3/results/rootfiles/TMVA_BDT.root:/dataset_test3/Method_BDT/BDTs
+Factory                  : Training finished
+                         : 
+                         : Ranking input variables (method specific)...
+BDTs                     : Ranking result (top variable is best ranked)
+                         : -----------------------------------------------------
+                         : Rank : Variable            : Variable Importance
+                         : -----------------------------------------------------
+                         :    1 : B_norm_svpvDistance : 2.845e-01
+                         :    2 : B_Qvalueuj          : 1.960e-01
+                         :    3 : B_alpha             : 1.815e-01
+                         :    4 : B_chi2cl            : 1.742e-01
+                         :    5 : B_norm_trk1Dxy      : 1.640e-01
+                         : -----------------------------------------------------
+Factory                  : === Destroy and recreate all methods via weight files for testing ===
+                         : 
+                         : Reading weight file: [0;36mdataset_test3/weights/TMVAClassification_BDTs.weights.xml[0m
+Factory                  : [1mTest all methods[0m
+Factory                  : Test method: BDTs for Classification performance
+                         : 
+BDTs                     : [dataset_test3] : Evaluation of BDTs on testing sample (114507 events)
+0%, time left: unknown
+7%, time left: 2 sec
+13%, time left: 2 sec
+18%, time left: 2 sec
+25%, time left: 2 sec
+31%, time left: 1 sec
+37%, time left: 1 sec
+43%, time left: 1 sec
+50%, time left: 1 sec
+56%, time left: 1 sec
+62%, time left: 1 sec
+68%, time left: 0 sec
+75%, time left: 0 sec
+81%, time left: 0 sec
+87%, time left: 0 sec
+93%, time left: 0 sec
+                         : Elapsed time for evaluation of 114507 events: 2.92 sec       
+Factory                  : [1mEvaluate all methods[0m
+Factory                  : Evaluate classifier: BDTs
+                         : 
+TFHandler_BDTs           :            Variable                   Mean                   RMS           [        Min                   Max ]
+                         : ------------------------------------------------------------------------------------------------------------------
+                         :             B_alpha:               1.3171              0.99960   [            -0.018032               2.7529 ]
+                         :            B_chi2cl:               1.3504              0.99852   [             -0.17379               3.2423 ]
+                         :          B_Qvalueuj:               1.7084               1.0020   [              -1.3173               4.7441 ]
+                         :      B_norm_trk1Dxy:             0.013375              0.99751   [              -7.7512               11.446 ]
+                         : B_norm_svpvDistance:              0.85410              0.99813   [           -0.0033445               15.147 ]
+                         : ------------------------------------------------------------------------------------------------------------------
+BDTs                     : [dataset_test3] : Loop over test events and fill histograms with classifier response...
+                         : 
+TFHandler_BDTs           :            Variable                   Mean                   RMS           [        Min                   Max ]
+                         : ------------------------------------------------------------------------------------------------------------------
+                         :             B_alpha:               1.3171              0.99960   [            -0.018032               2.7529 ]
+                         :            B_chi2cl:               1.3504              0.99852   [             -0.17379               3.2423 ]
+                         :          B_Qvalueuj:               1.7084               1.0020   [              -1.3173               4.7441 ]
+                         :      B_norm_trk1Dxy:             0.013375              0.99751   [              -7.7512               11.446 ]
+                         : B_norm_svpvDistance:              0.85410              0.99813   [           -0.0033445               15.147 ]
+                         : ------------------------------------------------------------------------------------------------------------------
+                         : 
+                         : Evaluation results ranked by best signal efficiency and purity (area)
+                         : -------------------------------------------------------------------------------------------------------------------
+                         : DataSet       MVA                       
+                         : Name:         Method:          ROC-integ
+                         : dataset_test3 BDTs           : 0.996
+                         : -------------------------------------------------------------------------------------------------------------------
+                         : 
+                         : Testing efficiency compared to training efficiency (overtraining check)
+                         : -------------------------------------------------------------------------------------------------------------------
+                         : DataSet              MVA              Signal efficiency: from test sample (from training sample) 
+                         : Name:                Method:          @B=0.01             @B=0.10            @B=0.30   
+                         : -------------------------------------------------------------------------------------------------------------------
+                         : dataset_test3        BDTs           : 0.911 (0.911)       1.000 (1.000)      1.000 (1.000)
+                         : -------------------------------------------------------------------------------------------------------------------
+                         : 
+Dataset:dataset_test3    : Created tree 'TestTree' with 114507 events
+                         : 
+Dataset:dataset_test3    : Created tree 'TrainTree' with 267181 events
+                         : 
+Factory                  : [1mThank you for using TMVA![0m
+                         : [1mFor citation information, please visit: http://tmva.sf.net/citeTMVA.html[0m
+Info in <TCanvas::Print>: png file dataset_test3/plots/ROC_ClassificationBDT.png has been created

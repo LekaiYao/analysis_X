@@ -1,6 +1,8 @@
 void select() {
     // Open the input ROOT file
-    TFile *f_in = TFile::Open("root_files/MC_PSI2S.root");
+    TFile *f_in = TFile::Open("root_files/DATA_XPSI_nonan.root");
+    //TFile *f_in = TFile::Open("root_files/MC_PSI2S.root");
+    //TFile *f_in = TFile::Open("root_files/sideband_PSI.root");
     TTree *tree = (TTree*)f_in->Get("tree");
 
     // Get all branches
@@ -26,7 +28,9 @@ void select() {
     }
 
     // Create the output file and clone the structure
-    TFile *f_out = TFile::Open("MC_PSI2S_test2.root", "RECREATE");
+    TFile *f_out = TFile::Open("DATA_XPSI_test3.root", "RECREATE");
+    //TFile *f_out = TFile::Open("MC_PSI2S_test3.root", "RECREATE");
+    //TFile *f_out = TFile::Open("sideband_PSI_test3.root", "RECREATE");
     TTree *new_tree = tree->CloneTree(0);
 
     Long64_t nEntries = tree->GetEntries();
@@ -38,13 +42,12 @@ void select() {
 
         // B_mass window cut
         //if (valid && (vars["B_mass"] > 3.65 && vars["B_mass"] < 3.72)) valid = false;
-        if (valid && (vars["B_mass"] < 3.6 || vars["B_mass"] > 3.8)) valid = false;
+        //if (valid && (vars["B_mass"] < 3.6 || vars["B_mass"] > 3.8)) valid = false;
 
         // -----------------------
         // Apply pre-cuts (access variables directly by name)
-        // Example:
-        if (valid && vars["B_chi2cl"] < 0.003) valid = false;
-        //if (valid && fabs(vars["B_eta"]) > 2.4) valid = false;
+        if (valid && vars["B_chi2cl"] < 0.005) valid = false;
+        if (valid && vars["B_Qvalueuj"] > 0.5) valid = false;
         // -----------------------
 
         if (valid) {

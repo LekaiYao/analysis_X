@@ -1,0 +1,2 @@
+The best cut for BDT_score is greater than 0.211 FOM_max=18.8733
+The range of BDT_score  is [ -1 , 1 ]
