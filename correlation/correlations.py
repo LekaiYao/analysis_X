@@ -48,15 +48,15 @@ def apply_cuts_from_accsel(df, is_mc=True, use_sidebands=False):
 # ==========================
 # APPLY CUTS
 # ==========================
-ANALYSIS_TYPE = "Data_sidebands"  # Options: "MC_signal", "Data_sidebands"
+ANALYSIS_TYPE = "MC_signal"  # Options: "MC_signal", "Data_sidebands"
 
 if ANALYSIS_TYPE == "MC_signal":
-    root_file = "/user/u/u25lekai/work/analysis_X/selection/root_files/MC_PSI2S.root"
+    root_file = "/user/u/u25lekai/work/analysis_X/selection/root_files/MC_X3872.root"
     is_mc = True
     use_sidebands = False
     output_suffix = "MC_signal"
 elif ANALYSIS_TYPE == "Data_sidebands":
-    root_file = "/user/u/u25lekai/work/analysis_X/selection/root_files/sideband_PSI.root"
+    root_file = "/user/u/u25lekai/work/analysis_X/selection/root_files/sideband_X3872.root"
     is_mc = False
     use_sidebands = True
     output_suffix = "Data_sidebands"

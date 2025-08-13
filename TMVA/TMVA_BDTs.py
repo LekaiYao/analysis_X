@@ -19,10 +19,10 @@ TMVA.Tools.Instance()               #need to run this two to load up TMVA
 TMVA.PyMethodBase.PyInitialize()    #in PyROOT
 
 #input PATH
-dir = "/user/u/u25lekai/work/analysis_X/selection/root_files/"
+dir = "/user/u/u25lekai/work/analysis_X/selection/test_root/"
 #data_file = "dataSideband_Bu.root"
-data_file = "sideband_PSI_test3.root"
-mc_file = "MC_PSI2S_test3.root"
+data_file = "sideband_X3872_v2test1.root"
+mc_file = "MC_X3872_v2test1.root"
  
 # Open the ROOT files and access the TTree for data and MC
 data = TFile.Open(dir + data_file)

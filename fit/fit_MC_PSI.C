@@ -17,7 +17,7 @@
 
 using namespace RooFit;
 
-void fit_MC_PSI2S() {
+void fit_MC_PSI() {
     TFile *f = TFile::Open("/user/u/u25lekai/work/analysis_B/selection/X_ppRef/MC_PSI2S.root");
     TTree *tree = (TTree*)f->Get("tree");
     
@@ -85,7 +85,7 @@ void fit_MC_PSI2S() {
 	frame_Bmass->Draw();
 	leg1.DrawClone();
 	//c_Bmass->SaveAs("./output_fit/1DfitBMass_MC_v8.pdf");
-	c_Bmass->SaveAs("./output_fit/1Dfitpsi2Smass_MC_v1.pdf");
+	c_Bmass->SaveAs("./pdf_MC_PSI/1Dfitpsi2Smass_MC_v1.pdf");
 
     f->Close();
 }

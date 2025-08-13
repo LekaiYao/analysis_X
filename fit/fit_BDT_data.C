@@ -109,7 +109,7 @@ void fit_BDT_data() {
 	frame_Bmass->Draw();
 	leg1.DrawClone();
 	//c_Bmass->SaveAs("./output_fit/1DfitBMass_MC_v8.pdf");
-	c_Bmass->SaveAs("./results_BDT/1DfitPsiX_BDTdata_v2.pdf");
+	c_Bmass->SaveAs("./pdf_BDT_data/1DfitPsiX_BDTdata_v2.pdf");
 
     f->Close();
 }

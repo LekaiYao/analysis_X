@@ -115,7 +115,7 @@ void fit_data() {
 	frame_Bmass->Draw();
 	leg1.DrawClone();
 	//c_Bmass->SaveAs("./output_fit/1DfitBMass_MC_v8.pdf");
-	c_Bmass->SaveAs("./output_data/1DfitPsiX_data_v1.pdf");
+	c_Bmass->SaveAs("./pdf_data/1DfitPsiX_data_v1.pdf");
 
     f->Close();
 }

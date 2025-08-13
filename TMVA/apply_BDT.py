@@ -7,13 +7,13 @@ ROOT.gROOT.SetBatch(True)
 # -----------------------------
 # Configuration parameters
 # -----------------------------
-model_xml_path = "dataset_test3/weights/TMVAClassification_BDTs.weights.xml"
-#input_data_path = "/user/u/u25lekai/work/analysis_X/selection/root_files/sideband_PSI_test3.root"
-#output_root = "sideband_PSI_BDT_test3.root"
-#input_data_path = "/user/u/u25lekai/work/analysis_X/selection/root_files/MC_PSI2S_test3.root"
-#output_root = "MC_PSI2S_BDT_test3.root"
-input_data_path = "/user/u/u25lekai/work/analysis_X/selection/root_files/DATA_XPSI_test3.root"
-output_root = "DATA_XPSI_BDT_test3.root"
+model_xml_path = "dataset_v2test1/weights/TMVAClassification_BDTs.weights.xml"
+#input_data_path = "/user/u/u25lekai/work/analysis_X/selection/test_root/sideband_X3872_v2test1.root"
+#output_root = "sideband_X3872_BDT_v2test1.root"
+input_data_path = "/user/u/u25lekai/work/analysis_X/selection/test_root/MC_X3872_v2test1.root"
+output_root = "MC_X3872_BDT_v2test1.root"
+#input_data_path = "/user/u/u25lekai/work/analysis_X/selection/test_root/DATA_XPSI_v2test1.root"
+#output_root = "DATA_XPSI_BDT_v2test1.root"
 tree_name = "tree"
 
 # -----------------------------

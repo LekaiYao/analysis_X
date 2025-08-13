@@ -19,7 +19,7 @@
 
 using namespace RooFit;
 
-void fit_DATA_fsfb() {
+void fit_PSI_fsfb() {
     TFile *f = TFile::Open("/user/u/u25lekai/work/analysis_X/TMVA/DATA_XPSI_BDT_test3.root");
     TTree *tree = (TTree*)f->Get("tree");
     
@@ -99,7 +99,7 @@ void fit_DATA_fsfb() {
 	frame_Bmass->Draw();
 	leg1.DrawClone();
 
-	c_Bmass->SaveAs("./output_BDT/1Dfitpsi2Smass_datafsfb_test3_v1.pdf");
+	c_Bmass->SaveAs("./pdf_PSI_fsfb/1Dfitpsi2Smass_datafsfb_test3_v1.pdf");
 
     f->Close();
 }
