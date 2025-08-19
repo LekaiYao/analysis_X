@@ -7,13 +7,13 @@ ROOT.gROOT.SetBatch(True)
 # -----------------------------
 # Configuration parameters
 # -----------------------------
-model_xml_path = "dataset_v2test1/weights/TMVAClassification_BDTs.weights.xml"
-#input_data_path = "/user/u/u25lekai/work/analysis_X/selection/test_root/sideband_X3872_v2test1.root"
-#output_root = "sideband_X3872_BDT_v2test1.root"
-input_data_path = "/user/u/u25lekai/work/analysis_X/selection/test_root/MC_X3872_v2test1.root"
-output_root = "MC_X3872_BDT_v2test1.root"
-#input_data_path = "/user/u/u25lekai/work/analysis_X/selection/test_root/DATA_XPSI_v2test1.root"
-#output_root = "DATA_XPSI_BDT_v2test1.root"
+model_xml_path = "dataset_test4/weights/TMVAClassification_BDTs.weights.xml"
+#input_data_path = "/user/u/u25lekai/work/analysis_X/selection/test_root/sideband_PSI_test4.root"
+#output_root = "sideband_PSI_BDT_test4.root"
+#input_data_path = "/user/u/u25lekai/work/analysis_X/selection/test_root/MC_PSI2S_test4.root"
+#output_root = "MC_PSI2S_BDT_test4.root"
+input_data_path = "/user/u/u25lekai/work/analysis_X/selection/test_root/DATA_XPSI_test4.root"
+output_root = "DATA_XPSI_BDT_test4.root"
 tree_name = "tree"
 
 # -----------------------------
@@ -28,14 +28,14 @@ reader = TMVA.Reader("!Color:!Silent")
 # Define input variables (must match training!)
 # -----------------------------
 B_alpha = array('f', [0.])
-B_chi2cl = array('f', [0.])
-B_Qvalueuj = array('f', [0.])
+#B_chi2cl = array('f', [0.])
+#B_Qvalueuj = array('f', [0.])
 B_norm_trk1Dxy = array('f', [0.])
 B_norm_svpvDistance = array('f', [0.])
 
 reader.AddVariable("B_alpha", B_alpha)
-reader.AddVariable("B_chi2cl",B_chi2cl)
-reader.AddVariable("B_Qvalueuj",B_Qvalueuj)
+#reader.AddVariable("B_chi2cl",B_chi2cl)
+#reader.AddVariable("B_Qvalueuj",B_Qvalueuj)
 reader.AddVariable("B_norm_trk1Dxy",B_norm_trk1Dxy)
 reader.AddVariable("B_norm_svpvDistance",B_norm_svpvDistance)
 
@@ -71,8 +71,8 @@ for i in range(nentries):
 
     # Assign input variable values
     B_alpha[0] = getattr(tree, "B_alpha")
-    B_chi2cl[0] = getattr(tree, "B_chi2cl")
-    B_Qvalueuj[0] = getattr(tree, "B_Qvalueuj")
+    #B_chi2cl[0] = getattr(tree, "B_chi2cl")
+    #B_Qvalueuj[0] = getattr(tree, "B_Qvalueuj")
     B_norm_trk1Dxy[0] = getattr(tree, "B_norm_trk1Dxy")
     B_norm_svpvDistance[0] = getattr(tree, "B_norm_svpvDistance")
 

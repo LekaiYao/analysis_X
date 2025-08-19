@@ -21,8 +21,8 @@ TMVA.PyMethodBase.PyInitialize()    #in PyROOT
 #input PATH
 dir = "/user/u/u25lekai/work/analysis_X/selection/test_root/"
 #data_file = "dataSideband_Bu.root"
-data_file = "sideband_X3872_v2test1.root"
-mc_file = "MC_X3872_v2test1.root"
+data_file = "sideband_PSI_test4.root"
+mc_file = "MC_PSI2S_test4.root"
  
 # Open the ROOT files and access the TTree for data and MC
 data = TFile.Open(dir + data_file)
@@ -58,8 +58,8 @@ dataloader = TMVA.DataLoader('dataset_' + input)
 # features to train the BDT
 # you could add the variables you want here
 dataloader.AddVariable("B_alpha")
-dataloader.AddVariable("B_chi2cl")
-dataloader.AddVariable("B_Qvalueuj")
+#dataloader.AddVariable("B_chi2cl")
+#dataloader.AddVariable("B_Qvalueuj")
 dataloader.AddVariable("B_norm_trk1Dxy")
 dataloader.AddVariable("B_norm_svpvDistance")
 
