@@ -18,10 +18,9 @@ TMVA.Tools.Instance()               # need to run this two to load up TMVA
 TMVA.PyMethodBase.PyInitialize()    # in PyROOT
 
 # input PATH
-dir = "/user/u/u25lekai/work/analysis_X/selection/test_root/"
-# data_file = "dataSideband_Bu.root"
-data_file = "sideband_PSI_test4.root"
-mc_file = "MC_PSI2S_test4.root"
+dir = "/user/u/u25lekai/work/ppRef/analysis_X/selection/test_root/"
+data_file = "sideband_PSI_v3test1.root"
+mc_file = "MC_PSI2S_v3test1.root"
  
 # Open the ROOT files and access the TTree for data and MC
 data = TFile.Open(dir + data_file)
@@ -30,15 +29,15 @@ background = data.Get("tree")
 signal = mc.Get("tree")
 
 # directories where the results will be stored
-if not os.path.exists("dataset_" + input + "/results/rootfiles"):
-    os.makedirs("dataset_" + input + "/results/rootfiles")
-if not os.path.exists("dataset_" + input + "/weights"):
-    os.makedirs("dataset_" + input + "/weights")
-if not os.path.exists("dataset_" + input + "/plots"):
-    os.makedirs("dataset_" + input + "/plots")
+if not os.path.exists("dataset/dataset_" + input + "/results/rootfiles"):
+    os.makedirs("dataset/dataset_" + input + "/results/rootfiles")
+if not os.path.exists("dataset/dataset_" + input + "/weights"):
+    os.makedirs("dataset/dataset_" + input + "/weights")
+if not os.path.exists("dataset/dataset_" + input + "/plots"):
+    os.makedirs("dataset/dataset_" + input + "/plots")
 
 # Create a ROOT output file where TMVA will store ntuples, histograms, correlationMatrix, etc
-outfname='dataset_' + input + '/results/rootfiles/TMVA_BDT.root' 
+outfname='dataset/dataset_' + input + '/results/rootfiles/TMVA_BDT.root' 
 output = TFile.Open(outfname, 'RECREATE')
 
 cuts="" # MC
@@ -50,14 +49,19 @@ mycutB=TCut(cutb)
 factory = TMVA.Factory('TMVAClassification', output, '!V:!Silent:Color:DrawProgressBar:Transformations=I;D;P;G,D:AnalysisType=Classification')
 
 # loads the outputs to the dir 'dataset'
-dataloader = TMVA.DataLoader('dataset_' + input)
+dataloader = TMVA.DataLoader('dataset/dataset_' + input)
 
 # features to train the BDT (keep as your original)
-dataloader.AddVariable("B_alpha")
+dataloader.AddVariable("B_trk1dR")
+dataloader.AddVariable("B_trk2dR")
+dataloader.AddVariable("B_trk1Pt")
+dataloader.AddVariable("B_trk2Pt")
+dataloader.AddVariable("B_trkPtimb")
+# dataloader.AddVariable("B_alpha")
 # dataloader.AddVariable("B_chi2cl")
 # dataloader.AddVariable("B_Qvalueuj")
-dataloader.AddVariable("B_norm_trk1Dxy")
-dataloader.AddVariable("B_norm_svpvDistance")
+# dataloader.AddVariable("B_norm_trk1Dxy")
+# dataloader.AddVariable("B_norm_svpvDistance")
 
 # NEW: add mass as spectator to monitor mass sculpting
 dataloader.AddSpectator("B_mass")
@@ -93,15 +97,15 @@ dataloader.PrepareTrainingAndTestTree(
 factory.BookMethod(
     dataloader, "BDT", "BDTs",
     "!H:!V:"
-    "NTrees=150:"
-    "MinNodeSize=10%:"
+    "NTrees=500:"
+    "MinNodeSize=5%:"
     "MaxDepth=3:"
     "BoostType=AdaBoost:"
     "VarTransform=Decorrelate:"
     "SeparationType=GiniIndex:"
-    "nCuts=20:"
+    "nCuts=30:"
     "UseBaggedBoost=True:"
-    "BaggedSampleFraction=0.5"
+    "BaggedSampleFraction=0.8"
 )
 
 # Run training,BDT test and evaluation
@@ -112,7 +116,7 @@ factory.EvaluateAllMethods() # add full dataset
 # Plot ROC Curves AND OTHERS
 roc = factory.GetROCCurve(dataloader)
 if roc:
-    roc.SaveAs('dataset_' + input + '/plots/ROC_ClassificationBDT.png')
+    roc.SaveAs('dataset/dataset_' + input + '/plots/ROC_ClassificationBDT.png')
 
 # close the output file
 output.Close()

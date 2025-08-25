@@ -1,3 +1,4 @@
 sideband PSI : [3.6,3.656] && [3.718,3.8]
 sideband X : [3.75,3.83] && [3.91,4.0]
+cut0: B_chi2cl > 0.003 && B_Qvalueuj < 0.2
 cut1: B_chi2cl > 0.005 && B_Qvalueuj < 0.2

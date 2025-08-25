@@ -1,0 +1,12 @@
+The best cut for B_cos_dtheta is less than -0.931 FOM_max=8.74786
+The range of B_cos_dtheta is [ -1 , 1 ]
+The best cut for B_chi2cl is greater than 0.0356 FOM_max=8.66152
+The range of B_chi2cl is [ 0 , 0.1 ]
+The best cut for B_Qvalueuj is less than 0.095 FOM_max=10.2444
+The range of B_Qvalueuj is [ -0.2 , 1 ]
+The best cut for B_cos_dtheta is less than -0.931 FOM_max=8.74786
+The range of B_cos_dtheta is [ -1 , 1 ]
+The best cut for B_chi2cl is greater than 0.0356 FOM_max=8.66152
+The range of B_chi2cl is [ 0 , 0.1 ]
+The best cut for B_Qvalueuj is less than 0.095 FOM_max=10.2444
+The range of B_Qvalueuj is [ -0.2 , 1 ]

@@ -3,9 +3,6 @@
 #include "TCanvas.h"
 #include "TLegend.h"
 #include "TH2F.h"
-#include "TLine.h"        // for the y=0 reference line on pull panel
-#include "TPaveText.h"    // for TPaveText box
-
 #include "RooAbsPdf.h"
 #include "RooExtendPdf.h"
 #include "RooGaussian.h"
@@ -16,46 +13,50 @@
 #include "RooArgList.h"
 #include "RooFitResult.h"
 #include "RooArgSet.h"
-#include "RooAbsData.h"
-#include "RooFit.h"
+#include "RooFit.h"   
 
 using namespace RooFit;
 
-void fit_MC_PSI() {
-    TFile *f = TFile::Open("/user/u/u25lekai/work/ppRef/analysis_X/selection/root_files/MC_PSI2S.root");//change
+void fit_MC_X() {
+    TFile *f = TFile::Open("/user/u/u25lekai/work/ppRef/analysis_X/selection/root_files/MC_X3872.root");
     TTree *tree = (TTree*)f->Get("tree");
-
-    float lowBmass = 3.66, highBmass = 3.72;
-    Int_t N = 10000;    // N is the max of events
-    Int_t BinNum = 60;
-
-    // --- Define observable
+    
+    float lowBmass=3.84,highBmass=3.90;
+    Int_t N=10000;//N is the max of events
+	Int_t BinNum=60;
+    
+    //define variables
     RooRealVar B_mass("B_mass", "B_mass", lowBmass, highBmass);
+    
+    //define the RooArgSet of the Dataset
+	RooArgSet vars;
+		vars.add(B_mass);
+    RooDataSet data("data", "data", vars,Import(*tree));
+	
+	//signal
+	RooRealVar mean("mean","mean",3.87,3.86,3.88);
+	RooRealVar sigma1("sigma1","sigma1",0.005,1e-05,0.01);
+	RooGaussian Gaus1("Gaus1","Gaus1",B_mass,mean,sigma1);
+	RooRealVar sigma2("sigma2","sigma2",0.0003,1e-05,0.006);
+	RooGaussian Gaus2("Gaus2","Gaus2",B_mass,mean,sigma2);
+	RooRealVar frac("frac","frac",0.5,0.2,0.8);
+	RooAddPdf Gaus_B("Gaus_B","Gaus_B",RooArgList(Gaus1,Gaus2),frac);
 
-    // --- Build dataset from TTree
-    RooArgSet vars; vars.add(B_mass);
-    RooDataSet data("data", "data", vars, Import(*tree));
+	
+	//normalization to get n_events
+	RooRealVar n_Gaus1=RooRealVar("n_Gaus1","n_Gaus1",300,0,N);
+	RooRealVar n_Gaus2=RooRealVar("n_Gaus2","n_Gaus2",200,0,N);
 
-    // --- Signal model: double Gaussian with common mean
-    RooRealVar mean  ("mean",  "mean",  3.69,    3.68, 3.70);
-    RooRealVar sigma1("sigma1","sigma1",0.005,   1e-05, 0.01);
-    RooGaussian Gaus1("Gaus1","Gaus1", B_mass, mean, sigma1);
-    RooRealVar sigma2("sigma2","sigma2",0.0003,  1e-05, 0.006);
-    RooGaussian Gaus2("Gaus2","Gaus2", B_mass, mean, sigma2);
-    RooRealVar frac  ("frac",  "frac",  0.5,     0.2, 0.8);
-    RooAddPdf  Gaus_B("Gaus_B","Gaus_B", RooArgList(Gaus1, Gaus2), frac);
+	RooExtendPdf Gaus1e("Gaus1e","Gaus1e",Gaus1,n_Gaus1);
+	RooExtendPdf Gaus2e("Gaus2e","Gaus2e",Gaus2,n_Gaus2);
 
-    // --- Extended terms (yields)
-    RooRealVar n_Gaus1 = RooRealVar("n_Gaus1","n_Gaus1",300,0,N);
-    RooRealVar n_Gaus2 = RooRealVar("n_Gaus2","n_Gaus2",200,0,N);
-    RooExtendPdf Gaus1e("Gaus1e","Gaus1e",Gaus1,n_Gaus1);
-    RooExtendPdf Gaus2e("Gaus2e","Gaus2e",Gaus2,n_Gaus2);
+	//add them together
+	RooAddPdf tot("total","total",RooArgList(Gaus1e,Gaus2e),RooArgList(n_Gaus1,n_Gaus2));
 
-    // --- Total pdf (sum of extended components)
-    RooAddPdf tot("total","total", RooArgList(Gaus1e, Gaus2e), RooArgList(n_Gaus1, n_Gaus2));
-
-    // --- Fit
-    RooFitResult* result = tot.fitTo(data, Save(), Minimizer("Minuit2", "Migrad"));
+	//fit
+	RooFitResult* result=tot.fitTo(data,Save(),Minimizer("Minuit2", "Migrad"));
+	//RooFitResult* result=Gaus_ext.fitTo(data,Save(),Minimizer("Minuit2", "Migrad"));
+	//RooFitResult* result=Gaus_ext.fitTo(*newdata,Save(),Minimizer("Minuit2", "Migrad"));
 
     // ============================================================
     // Drawing section with pull distribution and chi2/ndf
@@ -162,8 +163,7 @@ void fit_MC_PSI() {
     line0->Draw("same");
 
     // Save with a new filename to indicate the pull panel is included
-    c_Bmass->SaveAs("./pdf_MC_PSI/psi2Smass_MC_v1.pdf");
-
+    c_Bmass->SaveAs("./pdf_MC_X/Xmass_MC_v1.pdf");
 
     f->Close();
 }

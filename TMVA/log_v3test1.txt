@@ -1,0 +1,273 @@
+nohup: ignoring input
+DataSetInfo              : [dataset/dataset_v3test1] : Added class "Signal"
+                         : Add Tree tree of type Signal with 3564 events
+DataSetInfo              : [dataset/dataset_v3test1] : Added class "Background"
+                         : Add Tree tree of type Background with 228084 events
+Factory                  : Booking method: [1mBDTs[0m
+                         : 
+BDTs                     : [dataset/dataset_v3test1] : Create Transformation "Decorrelate" with events from all classes.
+                         : 
+                         : Transformation, Variable selection : 
+                         : Input : variable 'B_trk1dR' <---> Output : variable 'B_trk1dR'
+                         : Input : variable 'B_trk2dR' <---> Output : variable 'B_trk2dR'
+                         : Input : variable 'B_trk1Pt' <---> Output : variable 'B_trk1Pt'
+                         : Input : variable 'B_trk2Pt' <---> Output : variable 'B_trk2Pt'
+                         : Input : variable 'B_trkPtimb' <---> Output : variable 'B_trkPtimb'
+                         : Rebuilding Dataset dataset/dataset_v3test1
+                         : Building event vectors for type 2 Signal
+                         : Dataset[dataset/dataset_v3test1] :  create input formulas for tree tree
+                         : Building event vectors for type 2 Background
+                         : Dataset[dataset/dataset_v3test1] :  create input formulas for tree tree
+DataSetFactory           : [dataset/dataset_v3test1] : Number of events in input trees
+                         : 
+                         : 
+                         : Number of training and testing events
+                         : ---------------------------------------------------------------------------
+                         : Signal     -- training events            : 2494
+                         : Signal     -- testing events             : 1070
+                         : Signal     -- training and testing events: 3564
+                         : Background -- training events            : 10000
+                         : Background -- testing events             : 218084
+                         : Background -- training and testing events: 228084
+                         : 
+DataSetInfo              : Correlation matrix (Signal):
+                         : ----------------------------------------------------------
+                         :             B_trk1dR B_trk2dR B_trk1Pt B_trk2Pt B_trkPtimb
+                         :   B_trk1dR:   +1.000   -0.153   -0.579   -0.216     -0.227
+                         :   B_trk2dR:   -0.153   +1.000   -0.220   -0.585     -0.217
+                         :   B_trk1Pt:   -0.579   -0.220   +1.000   +0.114     +0.267
+                         :   B_trk2Pt:   -0.216   -0.585   +0.114   +1.000     +0.287
+                         : B_trkPtimb:   -0.227   -0.217   +0.267   +0.287     +1.000
+                         : ----------------------------------------------------------
+DataSetInfo              : Correlation matrix (Background):
+                         : ----------------------------------------------------------
+                         :             B_trk1dR B_trk2dR B_trk1Pt B_trk2Pt B_trkPtimb
+                         :   B_trk1dR:   +1.000   -0.053   -0.484   -0.265     -0.283
+                         :   B_trk2dR:   -0.053   +1.000   -0.264   -0.478     -0.292
+                         :   B_trk1Pt:   -0.484   -0.264   +1.000   +0.251     +0.346
+                         :   B_trk2Pt:   -0.265   -0.478   +0.251   +1.000     +0.360
+                         : B_trkPtimb:   -0.283   -0.292   +0.346   +0.360     +1.000
+                         : ----------------------------------------------------------
+DataSetFactory           : [dataset/dataset_v3test1] :  
+                         : 
+Factory                  : [1mTrain all methods[0m
+Factory                  : [dataset/dataset_v3test1] : Create Transformation "I" with events from all classes.
+                         : 
+                         : Transformation, Variable selection : 
+                         : Input : variable 'B_trk1dR' <---> Output : variable 'B_trk1dR'
+                         : Input : variable 'B_trk2dR' <---> Output : variable 'B_trk2dR'
+                         : Input : variable 'B_trk1Pt' <---> Output : variable 'B_trk1Pt'
+                         : Input : variable 'B_trk2Pt' <---> Output : variable 'B_trk2Pt'
+                         : Input : variable 'B_trkPtimb' <---> Output : variable 'B_trkPtimb'
+Factory                  : [dataset/dataset_v3test1] : Create Transformation "D" with events from all classes.
+                         : 
+                         : Transformation, Variable selection : 
+                         : Input : variable 'B_trk1dR' <---> Output : variable 'B_trk1dR'
+                         : Input : variable 'B_trk2dR' <---> Output : variable 'B_trk2dR'
+                         : Input : variable 'B_trk1Pt' <---> Output : variable 'B_trk1Pt'
+                         : Input : variable 'B_trk2Pt' <---> Output : variable 'B_trk2Pt'
+                         : Input : variable 'B_trkPtimb' <---> Output : variable 'B_trkPtimb'
+Factory                  : [dataset/dataset_v3test1] : Create Transformation "P" with events from all classes.
+                         : 
+                         : Transformation, Variable selection : 
+                         : Input : variable 'B_trk1dR' <---> Output : variable 'B_trk1dR'
+                         : Input : variable 'B_trk2dR' <---> Output : variable 'B_trk2dR'
+                         : Input : variable 'B_trk1Pt' <---> Output : variable 'B_trk1Pt'
+                         : Input : variable 'B_trk2Pt' <---> Output : variable 'B_trk2Pt'
+                         : Input : variable 'B_trkPtimb' <---> Output : variable 'B_trkPtimb'
+Factory                  : [dataset/dataset_v3test1] : Create Transformation "G" with events from all classes.
+                         : 
+                         : Transformation, Variable selection : 
+                         : Input : variable 'B_trk1dR' <---> Output : variable 'B_trk1dR'
+                         : Input : variable 'B_trk2dR' <---> Output : variable 'B_trk2dR'
+                         : Input : variable 'B_trk1Pt' <---> Output : variable 'B_trk1Pt'
+                         : Input : variable 'B_trk2Pt' <---> Output : variable 'B_trk2Pt'
+                         : Input : variable 'B_trkPtimb' <---> Output : variable 'B_trkPtimb'
+Factory                  : [dataset/dataset_v3test1] : Create Transformation "D" with events from all classes.
+                         : 
+                         : Transformation, Variable selection : 
+                         : Input : variable 'B_trk1dR' <---> Output : variable 'B_trk1dR'
+                         : Input : variable 'B_trk2dR' <---> Output : variable 'B_trk2dR'
+                         : Input : variable 'B_trk1Pt' <---> Output : variable 'B_trk1Pt'
+                         : Input : variable 'B_trk2Pt' <---> Output : variable 'B_trk2Pt'
+                         : Input : variable 'B_trkPtimb' <---> Output : variable 'B_trkPtimb'
+TFHandler_Factory        :   Variable          Mean          RMS   [        Min          Max ]
+                         : ---------------------------------------------------------------------
+                         :   B_trk1dR:     0.28688     0.16762   [   0.0031703     0.98277 ]
+                         :   B_trk2dR:     0.28616     0.16563   [   0.0010772      1.0260 ]
+                         :   B_trk1Pt:      1.0500     0.67198   [     0.50049      15.172 ]
+                         :   B_trk2Pt:      1.0656     0.69865   [     0.50049      21.172 ]
+                         : B_trkPtimb:     0.21550     0.16233   [      0.0000     0.88669 ]
+                         : ---------------------------------------------------------------------
+                         : Preparing the Decorrelation transformation...
+TFHandler_Factory        :   Variable          Mean          RMS   [        Min          Max ]
+                         : ---------------------------------------------------------------------
+                         :   B_trk1dR:      3.7329      1.0000   [      1.2836      13.218 ]
+                         :   B_trk2dR:      3.7465      1.0000   [      1.3605      15.977 ]
+                         :   B_trk1Pt:      1.8685      1.0000   [   -0.065155      24.162 ]
+                         :   B_trk2Pt:      1.8073      1.0000   [    -0.10674      32.751 ]
+                         : B_trkPtimb:      1.0827      1.0000   [     -6.4103      4.0239 ]
+                         : ---------------------------------------------------------------------
+                         : Preparing the Principle Component (PCA) transformation...
+TFHandler_Factory        :   Variable          Mean          RMS   [        Min          Max ]
+                         : ---------------------------------------------------------------------
+                         :   B_trk1dR:  7.5206e-11     0.77348   [    -0.86779      15.310 ]
+                         :   B_trk2dR:  1.1737e-10     0.60198   [     -12.871      8.2714 ]
+                         :   B_trk1Pt:  7.2875e-13     0.16385   [    -0.62551      1.0292 ]
+                         :   B_trk2Pt: -3.8966e-11     0.14744   [    -0.41671      1.9014 ]
+                         : B_trkPtimb:  2.4331e-11     0.11091   [     -1.5460     0.33945 ]
+                         : ---------------------------------------------------------------------
+                         : Preparing the Gaussian transformation...
+                         : Preparing the Decorrelation transformation...
+TFHandler_Factory        :   Variable          Mean          RMS   [        Min          Max ]
+                         : ---------------------------------------------------------------------
+                         :   B_trk1dR:   0.0049301      1.0000   [     -4.6226      6.4912 ]
+                         :   B_trk2dR:   0.0038886      1.0000   [     -4.3964      6.8071 ]
+                         :   B_trk1Pt:   0.0018700      1.0000   [     -4.2440      5.7455 ]
+                         :   B_trk2Pt:  -0.0022118      1.0000   [     -4.3209      5.4635 ]
+                         : B_trkPtimb:   0.0046986      1.0000   [     -3.6710      5.6736 ]
+                         : ---------------------------------------------------------------------
+                         : Ranking input variables (method unspecific)...
+IdTransformation         : Ranking result (top variable is best ranked)
+                         : -----------------------------------
+                         : Rank : Variable   : Separation
+                         : -----------------------------------
+                         :    1 : B_trk1dR   : 5.030e-02
+                         :    2 : B_trk1Pt   : 4.716e-02
+                         :    3 : B_trk2dR   : 4.365e-02
+                         :    4 : B_trk2Pt   : 3.526e-02
+                         :    5 : B_trkPtimb : 1.446e-02
+                         : -----------------------------------
+Factory                  : Train method: BDTs for Classification
+                         : 
+                         : Preparing the Decorrelation transformation...
+TFHandler_BDTs           :   Variable          Mean          RMS   [        Min          Max ]
+                         : ---------------------------------------------------------------------
+                         :   B_trk1dR:      3.7329      1.0000   [      1.2836      13.218 ]
+                         :   B_trk2dR:      3.7465      1.0000   [      1.3605      15.977 ]
+                         :   B_trk1Pt:      1.8685      1.0000   [   -0.065155      24.162 ]
+                         :   B_trk2Pt:      1.8073      1.0000   [    -0.10674      32.751 ]
+                         : B_trkPtimb:      1.0827      1.0000   [     -6.4103      4.0239 ]
+                         : ---------------------------------------------------------------------
+BDTs                     : #events: (reweighted) sig: 6247 bkg: 6247
+                         : #events: (unweighted) sig: 2494 bkg: 10000
+                         : Training 500 Decision Trees ... patience please
+0%, time left: unknown
+6%, time left: 2 sec
+12%, time left: 2 sec
+19%, time left: 2 sec
+25%, time left: 2 sec
+31%, time left: 2 sec
+37%, time left: 1 sec
+44%, time left: 1 sec
+50%, time left: 1 sec
+56%, time left: 1 sec
+62%, time left: 1 sec
+69%, time left: 0 sec
+75%, time left: 0 sec
+81%, time left: 0 sec
+87%, time left: 0 sec
+94%, time left: 0 sec
+                         : Elapsed time for training with 12494 events: 3.12 sec         
+BDTs                     : [dataset/dataset_v3test1] : Evaluation of BDTs on training sample (12494 events)
+0%, time left: unknown
+6%, time left: 0 sec
+12%, time left: 0 sec
+18%, time left: 0 sec
+25%, time left: 0 sec
+31%, time left: 0 sec
+37%, time left: 0 sec
+44%, time left: 0 sec
+50%, time left: 0 sec
+56%, time left: 0 sec
+62%, time left: 0 sec
+69%, time left: 0 sec
+75%, time left: 0 sec
+81%, time left: 0 sec
+88%, time left: 0 sec
+94%, time left: 0 sec
+                         : Elapsed time for evaluation of 12494 events: 0.437 sec       
+                         : Creating xml weight file: [0;36mdataset/dataset_v3test1/weights/TMVAClassification_BDTs.weights.xml[0m
+                         : Creating standalone class: [0;36mdataset/dataset_v3test1/weights/TMVAClassification_BDTs.class.C[0m
+                         : dataset/dataset_v3test1/results/rootfiles/TMVA_BDT.root:/dataset/dataset_v3test1/Method_BDT/BDTs
+Factory                  : Training finished
+                         : 
+                         : Ranking input variables (method specific)...
+BDTs                     : Ranking result (top variable is best ranked)
+                         : --------------------------------------------
+                         : Rank : Variable   : Variable Importance
+                         : --------------------------------------------
+                         :    1 : B_trk1dR   : 2.294e-01
+                         :    2 : B_trk2dR   : 2.211e-01
+                         :    3 : B_trkPtimb : 1.983e-01
+                         :    4 : B_trk1Pt   : 1.796e-01
+                         :    5 : B_trk2Pt   : 1.715e-01
+                         : --------------------------------------------
+Factory                  : === Destroy and recreate all methods via weight files for testing ===
+                         : 
+                         : Reading weight file: [0;36mdataset/dataset_v3test1/weights/TMVAClassification_BDTs.weights.xml[0m
+Factory                  : [1mTest all methods[0m
+Factory                  : Test method: BDTs for Classification performance
+                         : 
+BDTs                     : [dataset/dataset_v3test1] : Evaluation of BDTs on testing sample (219154 events)
+0%, time left: unknown
+6%, time left: 6 sec
+12%, time left: 5 sec
+18%, time left: 5 sec
+25%, time left: 4 sec
+31%, time left: 4 sec
+37%, time left: 4 sec
+43%, time left: 3 sec
+50%, time left: 3 sec
+56%, time left: 2 sec
+62%, time left: 2 sec
+68%, time left: 1 sec
+75%, time left: 1 sec
+81%, time left: 1 sec
+87%, time left: 0 sec
+93%, time left: 0 sec
+                         : Elapsed time for evaluation of 219154 events: 6.44 sec       
+Factory                  : [1mEvaluate all methods[0m
+Factory                  : Evaluate classifier: BDTs
+                         : 
+TFHandler_BDTs           :   Variable          Mean          RMS   [        Min          Max ]
+                         : ---------------------------------------------------------------------
+                         :   B_trk1dR:      3.8071      1.0437   [      1.1969      14.280 ]
+                         :   B_trk2dR:      3.8201      1.0565   [      1.1046      17.346 ]
+                         :   B_trk1Pt:      1.8438     0.96788   [   -0.082302      26.546 ]
+                         :   B_trk2Pt:      1.7585     0.93641   [    -0.24460      32.960 ]
+                         : B_trkPtimb:      1.0611     0.97729   [     -7.1848      4.1304 ]
+                         : ---------------------------------------------------------------------
+BDTs                     : [dataset/dataset_v3test1] : Loop over test events and fill histograms with classifier response...
+                         : 
+TFHandler_BDTs           :   Variable          Mean          RMS   [        Min          Max ]
+                         : ---------------------------------------------------------------------
+                         :   B_trk1dR:      3.8071      1.0437   [      1.1969      14.280 ]
+                         :   B_trk2dR:      3.8201      1.0565   [      1.1046      17.346 ]
+                         :   B_trk1Pt:      1.8438     0.96788   [   -0.082302      26.546 ]
+                         :   B_trk2Pt:      1.7585     0.93641   [    -0.24460      32.960 ]
+                         : B_trkPtimb:      1.0611     0.97729   [     -7.1848      4.1304 ]
+                         : ---------------------------------------------------------------------
+                         : 
+                         : Evaluation results ranked by best signal efficiency and purity (area)
+                         : -------------------------------------------------------------------------------------------------------------------
+                         : DataSet       MVA                       
+                         : Name:         Method:          ROC-integ
+                         : dataset/dataset_v3test1 BDTs           : 0.777
+                         : -------------------------------------------------------------------------------------------------------------------
+                         : 
+                         : Testing efficiency compared to training efficiency (overtraining check)
+                         : -------------------------------------------------------------------------------------------------------------------
+                         : DataSet              MVA              Signal efficiency: from test sample (from training sample) 
+                         : Name:                Method:          @B=0.01             @B=0.10            @B=0.30   
+                         : -------------------------------------------------------------------------------------------------------------------
+                         : dataset/dataset_v3test1 BDTs           : 0.065 (0.094)       0.371 (0.432)      0.725 (0.750)
+                         : -------------------------------------------------------------------------------------------------------------------
+                         : 
+Dataset:dataset/datase...: Created tree 'TestTree' with 219154 events
+                         : 
+Dataset:dataset/datase...: Created tree 'TrainTree' with 12494 events
+                         : 
+Factory                  : [1mThank you for using TMVA![0m
+                         : [1mFor citation information, please visit: http://tmva.sf.net/citeTMVA.html[0m
+Info in <TCanvas::Print>: png file dataset/dataset_v3test1/plots/ROC_ClassificationBDT.png has been created

@@ -19,11 +19,11 @@
 
 using namespace RooFit;
 
-void fit_PSI_fsfb() {
-    TFile *f = TFile::Open("/user/u/u25lekai/work/ppRef/analysis_X/TMVA/DATA_XPSI_BDT_v3test1.root");
+void fit_X_fsfb() {
+    TFile *f = TFile::Open("/user/u/u25lekai/work/analysis_X/TMVA/DATA_XPSI_BDT_v2test1.root");
     TTree *tree = (TTree*)f->Get("tree");
     
-    float lowBmass=3.6,highBmass=3.8,lowBDTscore=-1.0,highBDTscore=1.0;
+    float lowBmass=3.75,highBmass=4.0,lowBDTscore=-1.0,highBDTscore=1.0;
     Int_t N=1000000;//N is the max of events
 	Int_t BinNum=100;
     
@@ -36,10 +36,10 @@ void fit_PSI_fsfb() {
 		vars.add(B_mass);
 		vars.add(BDT_score);
     RooDataSet data("data", "data", vars,Import(*tree));
-	RooDataSet* newdata = (RooDataSet*)data.reduce("(BDT_score>-0.2)");
+	RooDataSet* newdata = (RooDataSet*)data.reduce("(BDT_score>0.0)");
 
 	//signal of PSI2S
-	RooRealVar mean("mean","mean",3.69,3.66,3.72);
+	RooRealVar mean("mean","mean",3.87,3.83,3.91);
 	RooRealVar sigma1("sigma1","sigma1",0.008,1e-05,0.02);
 	RooGaussian Gaus1("Gaus1","Gaus1",B_mass,mean,sigma1);
 	RooRealVar sigma2("sigma2","sigma2",0.004,1e-05,0.01);
@@ -99,7 +99,7 @@ void fit_PSI_fsfb() {
 	frame_Bmass->Draw();
 	leg1.DrawClone();
 
-	c_Bmass->SaveAs("./pdf_PSI_fsfb/psi2Smass_datafsfb_v3test1_v1.pdf");
+	c_Bmass->SaveAs("./pdf_X_fsfb/1Dfitpsi2Smass_datafsfb_v2test1_v1.pdf");
 
     f->Close();
 }

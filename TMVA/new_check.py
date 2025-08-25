@@ -39,9 +39,11 @@ def ks_on_sidebands(tree, reader, var_arrays, var_names, spec_arrays, thr,
     if hcut.Integral() > 0:
         hcut.Scale(1.0 / hcut.Integral())
 
-    ks_val = href.KolmogorovTest(hcut) if hcut.Integral() > 0 else -1.0
+    ks_pval = href.KolmogorovTest(hcut) if hcut.Integral() > 0 else -1.0
+    # CHANGED: use "M" to get the maximum KS distance D (not pseudo-experiment p-value)
+    ks_D    = href.KolmogorovTest(hcut, "M") if hcut.Integral() > 0 else -1.0
 
-    return ks_val, sb_before, sb_after, href, hcut
+    return ks_pval, ks_D, sb_before, sb_after, href, hcut
 
 
 def build_reader(var_names, xml_path):
@@ -119,12 +121,12 @@ def main():
         idx = int((1.0 - eff) * len(scores))
         thr = scores[idx]
         tag = f"eff{int(eff*100)}"  # unique tag for hist names
-        ks_val, sb_before, sb_after, href, hcut = ks_on_sidebands(
+        ks_pval, ks_D, sb_before, sb_after, href, hcut = ks_on_sidebands(
             tdat, reader, var_arrays, var_names, spec_arrays, thr, tag=tag
         )
 
         # save results for later
-        results.append((eff, thr, ks_val, sb_before, sb_after))
+        results.append((eff, thr, ks_pval, ks_D, sb_before, sb_after))
 
         # save plot
         c = ROOT.TCanvas()
@@ -137,9 +139,10 @@ def main():
 
     # ---- unified summary output ----
     print("\n======= Summary of KS test results =======")
-    print(f"{'Eff':>6} {'Thr':>8} {'KS':>12} {'SB_before':>12} {'SB_after':>12}")
-    for eff, thr, ks_val, sb_before, sb_after in results:
-        print(f"{eff:6.2f} {thr:8.3f} {ks_val:12.4f} {sb_before:12d} {sb_after:12d}")
+    print(f"{'Eff':>6} {'Thr':>8} {'KS_pval':>12} {'KS_D':>12} {'SB_before':>12} {'SB_after':>12}")
+    for eff, thr, ks_pval, ks_D, sb_before, sb_after in results:
+        # CHANGED: scientific notation for p-value; more precision for KS_D
+        print(f"{eff:6.2f} {thr:8.3f} {ks_pval:12.3e} {ks_D:12.6f} {sb_before:12d} {sb_after:12d}")
     print("==========================================")
 
 

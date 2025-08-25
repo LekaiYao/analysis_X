@@ -58,8 +58,8 @@ dataloader = TMVA.DataLoader('dataset_' + input)
 # features to train the BDT
 # you could add the variables you want here
 dataloader.AddVariable("B_alpha")
-#dataloader.AddVariable("B_chi2cl")
-#dataloader.AddVariable("B_Qvalueuj")
+dataloader.AddVariable("B_chi2cl")
+dataloader.AddVariable("B_Qvalueuj")
 dataloader.AddVariable("B_norm_trk1Dxy")
 dataloader.AddVariable("B_norm_svpvDistance")
 

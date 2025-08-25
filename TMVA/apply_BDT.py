@@ -7,13 +7,14 @@ ROOT.gROOT.SetBatch(True)
 # -----------------------------
 # Configuration parameters
 # -----------------------------
-model_xml_path = "dataset_test4/weights/TMVAClassification_BDTs.weights.xml"
-#input_data_path = "/user/u/u25lekai/work/analysis_X/selection/test_root/sideband_PSI_test4.root"
-#output_root = "sideband_PSI_BDT_test4.root"
-#input_data_path = "/user/u/u25lekai/work/analysis_X/selection/test_root/MC_PSI2S_test4.root"
-#output_root = "MC_PSI2S_BDT_test4.root"
-input_data_path = "/user/u/u25lekai/work/analysis_X/selection/test_root/DATA_XPSI_test4.root"
-output_root = "DATA_XPSI_BDT_test4.root"
+run_label = "v3test1"
+model_xml_path = f"dataset/dataset_{run_label}/weights/TMVAClassification_BDTs.weights.xml"
+#input_data_path = f"/user/u/u25lekai/work/ppRef/analysis_X/selection/test_root/sideband_PSI_{run_label}.root"
+#output_root = f"sideband_PSI_BDT_{run_label}.root"
+input_data_path = f"/user/u/u25lekai/work/ppRef/analysis_X/selection/test_root/MC_PSI2S_{run_label}.root"
+output_root = f"MC_PSI2S_BDT_{run_label}.root"
+#input_data_path = f"/user/u/u25lekai/work/ppRef/analysis_X/selection/test_root/DATA_XPSI_{run_label}.root"
+#output_root = f"DATA_XPSI_BDT_{run_label}.root"
 tree_name = "tree"
 
 # -----------------------------
@@ -27,17 +28,31 @@ reader = TMVA.Reader("!Color:!Silent")
 # -----------------------------
 # Define input variables (must match training!)
 # -----------------------------
-B_alpha = array('f', [0.])
+B_trk1dR = array('f', [0.])
+B_trk2dR = array('f', [0.])
+B_trk1Pt = array('f', [0.])
+B_trk2Pt = array('f', [0.])
+B_trkPtimb = array('f', [0.])
+#B_alpha = array('f', [0.])
 #B_chi2cl = array('f', [0.])
 #B_Qvalueuj = array('f', [0.])
-B_norm_trk1Dxy = array('f', [0.])
-B_norm_svpvDistance = array('f', [0.])
+#B_norm_trk1Dxy = array('f', [0.])
+#B_norm_svpvDistance = array('f', [0.])
 
-reader.AddVariable("B_alpha", B_alpha)
+B_mass = array('f', [0.])
+
+reader.AddVariable("B_trk1dR",B_trk1dR)
+reader.AddVariable("B_trk2dR",B_trk2dR)
+reader.AddVariable("B_trk1Pt",B_trk1Pt)
+reader.AddVariable("B_trk2Pt",B_trk2Pt)
+reader.AddVariable("B_trkPtimb",B_trkPtimb)
+#reader.AddVariable("B_alpha", B_alpha)
 #reader.AddVariable("B_chi2cl",B_chi2cl)
 #reader.AddVariable("B_Qvalueuj",B_Qvalueuj)
-reader.AddVariable("B_norm_trk1Dxy",B_norm_trk1Dxy)
-reader.AddVariable("B_norm_svpvDistance",B_norm_svpvDistance)
+#reader.AddVariable("B_norm_trk1Dxy",B_norm_trk1Dxy)
+#reader.AddVariable("B_norm_svpvDistance",B_norm_svpvDistance)
+
+reader.AddSpectator("B_mass", B_mass)
 
 reader.BookMVA("BDT", model_xml_path)
 
@@ -69,12 +84,19 @@ print(f"Processing {nentries} entries...")
 for i in range(nentries):
     tree.GetEntry(i)
 
+    B_mass[0] = getattr(tree, "B_mass")
+
     # Assign input variable values
-    B_alpha[0] = getattr(tree, "B_alpha")
+    B_trk1dR[0] = getattr(tree, "B_trk1dR")
+    B_trk2dR[0] = getattr(tree, "B_trk2dR")
+    B_trk1Pt[0] = getattr(tree, "B_trk1Pt")
+    B_trk2Pt[0] = getattr(tree, "B_trk2Pt")
+    B_trkPtimb[0] = getattr(tree, "B_trkPtimb")
+    #B_alpha[0] = getattr(tree, "B_alpha")
     #B_chi2cl[0] = getattr(tree, "B_chi2cl")
     #B_Qvalueuj[0] = getattr(tree, "B_Qvalueuj")
-    B_norm_trk1Dxy[0] = getattr(tree, "B_norm_trk1Dxy")
-    B_norm_svpvDistance[0] = getattr(tree, "B_norm_svpvDistance")
+    #B_norm_trk1Dxy[0] = getattr(tree, "B_norm_trk1Dxy")
+    #B_norm_svpvDistance[0] = getattr(tree, "B_norm_svpvDistance")
 
     # Evaluate BDT
     bdt_score[0] = reader.EvaluateMVA("BDT")

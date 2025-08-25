@@ -1,1 +1,9 @@
-BDT_score/-1.0/1.0/0.001
+B_cos_dtheta/-1.0/1.0/0.001
+B_Qvalueuj/-0.2/0.2/0.001
+B_trkPtimb/0.0/1.0/0.001
+B_trk1dR/0.0/1.0/0.001
+B_trk2dR/0.0/1.0/0.001
+B_norm_svpvDistance/0.0/30.0/0.01
+B_norm_svpvDistance_2D/0.0/30.0/0.01
+B_norm_trk1Dxy/-10.0/10.0/0.01
+B_norm_trk2Dxy/-10.0/10.0/0.01
