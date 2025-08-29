@@ -51,12 +51,12 @@ def apply_cuts_from_accsel(df, is_mc=True, use_sidebands=False):
 ANALYSIS_TYPE = "MC_signal"  # Options: "MC_signal", "Data_sidebands"
 
 if ANALYSIS_TYPE == "MC_signal":
-    root_file = "/user/u/u25lekai/work/analysis_X/selection/root_files/MC_X3872.root"
+    root_file = "/user/u/u25lekai/work/ppRef/analysis_X/selection/root_files/MC_X3872.root"
     is_mc = True
     use_sidebands = False
     output_suffix = "MC_signal"
 elif ANALYSIS_TYPE == "Data_sidebands":
-    root_file = "/user/u/u25lekai/work/analysis_X/selection/root_files/sideband_X3872.root"
+    root_file = "/user/u/u25lekai/work/ppRef/analysis_X/selection/root_files/sideband.root"
     is_mc = False
     use_sidebands = True
     output_suffix = "Data_sidebands"
@@ -152,13 +152,13 @@ else:
     sns.heatmap(corr_matrix, annot=True, cmap="coolwarm", vmin=-1, vmax=1,
                 fmt='.3f', square=True, cbar_kws={"shrink": .8})
 
-    plot_title = f"Correlation Matrix - {ANALYSIS_TYPE.replace('_', ' ').title()}"
+    plot_title = ""
     plt.title(plot_title, fontsize=16)
     plt.xticks(rotation=45, ha='right')
     plt.yticks(rotation=0)
     plt.tight_layout()
 
-    output_file = f"correlation_matrix_{output_suffix}.pdf"
+    output_file = f"matrix_pdf/correlation_matrix_{output_suffix}_X3872.pdf"
     plt.savefig(output_file, dpi=300, bbox_inches='tight', format='pdf')
     print(f"\nCorrelation matrix plot saved as: {output_file}")
     plt.close()

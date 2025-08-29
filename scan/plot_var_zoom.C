@@ -5,9 +5,9 @@
 #include "TLegend.h"
 #include "TStyle.h"
 
-void plot_var() {
+void plot_var_zoom() {
     // --------- User-defined variable name ---------
-    TString varName = "B_Qvalueuj";  // Variable to inspect
+    TString varName = "B_chi2cl";  // Variable to inspect
 
     // --------- Automatically determined variable range ---------
     Float_t var_min = 1e10;
@@ -58,10 +58,6 @@ void plot_var() {
     }
 
     int nBins = 100;
-    //Define the region by hand
-    var_min = -0.1;
-    var_max = 0.7;
-
     TH1F *h_data = new TH1F("h_data", varName, nBins, var_min, var_max);
     TH1F *h_mc   = new TH1F("h_mc",   varName, nBins, var_min, var_max);
     TH1F *h_mc2  = new TH1F("h_mc2",  varName, nBins, var_min, var_max);
@@ -105,14 +101,6 @@ void plot_var() {
     h_mc->Draw("hist same");
     h_mc2->Draw("hist same");
 
-    // ---------- Vertical cut line at x = 0.2 on main plot by hand----------
-    double cut_x = 0.2;
-    TLine *cutLine_main = new TLine(cut_x, 0.0, cut_x, h_data->GetMaximum());
-    cutLine_main->SetLineColor(TColor::GetColor(34,139,34)); 
-    cutLine_main->SetLineStyle(2); // dashed
-    cutLine_main->SetLineWidth(2);
-    cutLine_main->Draw("same");
-
     // Add legend
     TLegend *leg = new TLegend(0.65, 0.70, 0.88, 0.88);
     leg->AddEntry(h_data, "sideband", "lf");
@@ -120,5 +108,84 @@ void plot_var() {
     leg->AddEntry(h_mc2,  "X(3872)",  "lf");
     leg->Draw();
 
-    c1->SaveAs("pre-cut/"+varName + "_compare.pdf");
+    // ---------- Inset zoom of [0, 0.05] with dedicated binning ----------
+    c1->cd();
+
+    // Create a transparent inset pad in NDC of the main canvas
+    TPad* inset = new TPad("inset","inset", 0.2, 0.2, 0.65, 0.65);
+    inset->SetBorderMode(1);
+    inset->SetTopMargin(0.08);
+    inset->SetBottomMargin(0.25);
+    inset->SetLeftMargin(0.18);
+    inset->SetRightMargin(0.05);
+    inset->Draw();
+    inset->cd();
+
+    // Define binning for zoom region
+    const int    zoom_bins = 50;   // you can change to 40, 50, etc.
+    const double zoom_low  = 0.0;
+    const double zoom_high = 0.05;
+
+    // New histograms for zoomed region
+    TH1F* h_data_zoom = new TH1F("h_data_zoom", "", zoom_bins, zoom_low, zoom_high);
+    TH1F* h_mc_zoom   = new TH1F("h_mc_zoom",   "", zoom_bins, zoom_low, zoom_high);
+    TH1F* h_mc2_zoom  = new TH1F("h_mc2_zoom",  "", zoom_bins, zoom_low, zoom_high);
+
+    // Fill zoom histograms
+    tree_data->Draw(varName + ">>h_data_zoom", "", "goff");
+    tree_mc  ->Draw(varName + ">>h_mc_zoom",   "", "goff");
+    tree_mc2 ->Draw(varName + ">>h_mc2_zoom",  "", "goff");
+
+    // Normalize
+    if (h_data_zoom->Integral() > 0) h_data_zoom->Scale(1.0 / h_data_zoom->Integral());
+    if (h_mc_zoom->Integral()   > 0) h_mc_zoom->Scale(1.0 / h_mc_zoom->Integral());
+    if (h_mc2_zoom->Integral()  > 0) h_mc2_zoom->Scale(1.0 / h_mc2_zoom->Integral());
+
+    // Inherit styles from main histograms
+    h_data_zoom->SetLineColor(h_data->GetLineColor());
+    h_data_zoom->SetLineWidth(2);
+    h_data_zoom->SetFillColor(h_data->GetFillColor());
+    h_data_zoom->SetFillStyle(h_data->GetFillStyle());
+
+    h_mc_zoom->SetLineColor(h_mc->GetLineColor());
+    h_mc_zoom->SetLineWidth(2);
+    h_mc_zoom->SetFillColorAlpha(h_mc->GetFillColor(), 0.4);
+    h_mc_zoom->SetFillStyle(h_mc->GetFillStyle());
+
+    h_mc2_zoom->SetLineColor(h_mc2->GetLineColor());
+    h_mc2_zoom->SetLineWidth(2);
+    h_mc2_zoom->SetFillColorAlpha(h_mc2->GetFillColor(), 0.2);
+    h_mc2_zoom->SetFillStyle(h_mc2->GetFillStyle());
+
+    // Adjust axis
+    h_data_zoom->SetTitle("");
+    h_data_zoom->GetXaxis()->SetTitle(varName);
+    h_data_zoom->GetYaxis()->SetTitle("Normalized Entries");
+    h_data_zoom->GetXaxis()->SetLabelSize(0.04);
+    h_data_zoom->GetYaxis()->SetLabelSize(0.04);
+    h_data_zoom->GetXaxis()->SetTitleSize(0.06);
+    h_data_zoom->GetYaxis()->SetTitleSize(0.06);
+    h_data_zoom->GetYaxis()->SetTitleOffset(0.9);
+
+    // Auto-scale maximum
+    double ymax = std::max({h_data_zoom->GetMaximum(),
+                            h_mc_zoom->GetMaximum(),
+                            h_mc2_zoom->GetMaximum()});
+    h_data_zoom->SetMaximum(ymax * 1.2);
+
+    // Draw zoomed histograms
+    h_data_zoom->Draw("hist");
+    h_mc_zoom  ->Draw("hist same");
+    h_mc2_zoom ->Draw("hist same");
+
+    // ---------- Vertical cut line at B_chi2cl = 0.003 ----------
+    double cut_x = 0.003;
+    TLine *cutLine = new TLine(cut_x, 0.0, cut_x, h_data_zoom->GetMaximum());
+    cutLine->SetLineColor(TColor::GetColor(34,139,34));
+    cutLine->SetLineStyle(2); // dashed line
+    cutLine->SetLineWidth(2);
+    cutLine->Draw("same");
+
+
+    c1->SaveAs("pre-cut/"+varName + "_compare_zoom.pdf");
 }

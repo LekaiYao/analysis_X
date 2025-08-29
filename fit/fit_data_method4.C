@@ -18,7 +18,7 @@
 
 using namespace RooFit;
 
-void fit_data() {
+void fit_data_method4() {
     TFile *f = TFile::Open("../selection/root_files/DATA_XPSI_cut0.root");
     TTree *tree = (TTree*)f->Get("tree");
     
@@ -56,25 +56,22 @@ void fit_data() {
     RooDataSet data("data", "data", vars,Import(*tree));
 	//RooDataSet* newdata = (RooDataSet*)data.reduce("(B_norm_svpvDistance<1.92)");
 	
-	/*
+
 	//signal of Psi(2S)
 	RooRealVar mean_psi2s("mean_psi2s","mean_psi2s",3.69,3.68,3.70);
-	RooRealVar sigma1_psi2s("sigma1_psi2s","sigma1_psi2s",0.006,1e-04,0.01);
+	RooRealVar sigma1_psi2s("sigma1_psi2s","sigma1_psi2s",0.014,1e-03,0.015);
 	RooGaussian Gaus1_psi2s("Gaus1_psi2s","Gaus1_psi2s",B_mass,mean_psi2s,sigma1_psi2s);
-	RooRealVar sigma2_psi2s("sigma2_psi2s","sigma2_psi2s",0.003,5e-05,0.005);
+	RooRealVar sigma2_psi2s("sigma2_psi2s","sigma2_psi2s",0.005,1e-04,0.006);
 	RooGaussian Gaus2_psi2s("Gaus2_psi2s","Gaus2_psi2s",B_mass,mean_psi2s,sigma2_psi2s);
 	RooRealVar frac_psi2s("frac_psi2s","frac_psi2s",0.5,0.2,0.8);
 	RooAddPdf sig_psi2s("sig_psi2s","sig_psi2s",RooArgList(Gaus1_psi2s,Gaus2_psi2s),frac_psi2s);
 
 	//signal of X(3872)
 	RooRealVar mean_X("mean_X","mean_X",3.87,3.86,3.88);
-	RooRealVar sigma1_X("sigma1_X","sigma1_X",0.006,1e-04,0.01);
-	RooGaussian Gaus1_X("Gaus1_X","Gaus1_X",B_mass,mean_X,sigma1_X);
-	RooRealVar sigma2_X("sigma2_X","sigma2_X",0.003,5e-05,0.005);
-	RooGaussian Gaus2_X("Gaus2_X","Gaus2_X",B_mass,mean_X,sigma2_X);
-	RooRealVar frac_X("frac_X","frac_X",0.5,0.2,0.8);
-	RooAddPdf sig_X("sig_X","sig_X",RooArgList(Gaus1_X,Gaus2_X),frac_X);
-	*/
+	RooRealVar sigma_X("sigma_X","sigma_X",0.012,1e-03,0.015);
+	RooGaussian sig_X("sig_X","sig_X",B_mass,mean_X,sigma_X);
+
+	/*
 	//signal of Psi(2S)
 	RooRealVar mean_psi2s("mean_psi2s","mean_psi2s",3.69,3.68,3.70);
 	RooRealVar sigma1("sigma1","sigma1",0.009,1e-03,0.015);
@@ -89,6 +86,7 @@ void fit_data() {
 	RooGaussian Gaus1_X("Gaus1_X","Gaus1_X",B_mass,mean_X,sigma1);
 	RooGaussian Gaus2_X("Gaus2_X","Gaus2_X",B_mass,mean_X,sigma2);
 	RooAddPdf sig_X("sig_X","sig_X",RooArgList(Gaus1_X,Gaus2_X),frac);
+	*/
 
 
 	// Chebychev polynomial background
@@ -149,11 +147,18 @@ void fit_data() {
 
 
 	// Plot data and model (name them so pull can find them)
-	data.plotOn(frame_Bmass, DataError(RooAbsData::SumW2), Name("data"));
+	data.plotOn(frame_Bmass,DataError(RooAbsData::SumW2),Name("data"));
+	// Make main data markers smaller and error bars thinner
+	if (auto hDataMain = dynamic_cast<RooHist*>(frame_Bmass->findObject("data"))) {
+		hDataMain->SetMarkerStyle(20); // solid dot
+		hDataMain->SetMarkerSize(0.5); // smaller points
+		hDataMain->SetLineWidth(1);    // thinner error bars
+	}
 	tot.plotOn(frame_Bmass, LineColor(kBlue), LineStyle(1), Name("all"));
 	tot.plotOn(frame_Bmass, Components(sig_psi2s), LineColor(orange), LineStyle(3), Name("sig_psi2s"));
 	tot.plotOn(frame_Bmass, Components(sig_X),     LineColor(pink),  LineStyle(2), Name("sig_X"));
 	tot.plotOn(frame_Bmass, Components(bkg),       LineColor(brightAzure),LineStyle(1), Name("bkg"));
+
 
 	// Override Y-axis label with fixed bin width (avoid 0.000999999 formatting)
 	frame_Bmass->GetYaxis()->SetTitle("Events / (0.0025)");
@@ -163,15 +168,22 @@ void fit_data() {
 	RooPlot* frame_pull = B_mass.frame();
 	frame_pull->SetTitle(""); // remove default title
 	frame_pull->addPlotable(hpull, "P");
+	// --- Make pull points thinner/smaller ---
+	hpull->SetMarkerStyle(20);
+	hpull->SetMarkerSize(0.5);  // smaller
+	hpull->SetLineWidth(1);     // thinner vertical error bars
+
+	// --- Tighten y-range to [-3, 3] ---
+	frame_pull->SetMinimum(-3.0);
+	frame_pull->SetMaximum(+3.0);
 	frame_pull->SetYTitle("Pull");
-	frame_pull->SetMinimum(-5.0);
-	frame_pull->SetMaximum(+5.0);
+
 
 	// Axis formatting for the pull panel
 	frame_pull->GetYaxis()->SetTitleSize(0.10);
 	frame_pull->GetYaxis()->SetTitleOffset(0.45);
-	frame_pull->GetYaxis()->SetLabelSize(0.09);
-	frame_pull->GetXaxis()->SetTitle("m_{J/#psi#pi^{+}#pi^{-}}(GEV)");
+	frame_pull->GetYaxis()->SetLabelSize(0.09);// Hide all y-axis numeric labels (we'll draw a single '0' ourselves)
+	frame_pull->GetXaxis()->SetTitle("m_{J/#psi#pi^{+}#pi^{-}}[GeV/c^{2}]");
 	frame_pull->GetXaxis()->SetTitleSize(0.12);
 	frame_pull->GetXaxis()->SetLabelSize(0.10);
 
@@ -190,7 +202,7 @@ void fit_data() {
 	double x1 = lowBmass + 0.72*(highBmass - lowBmass);
 	double x2 = lowBmass + 1.00*(highBmass - lowBmass);
 	double y0 = 0.80*frame_Bmass->GetMaximum();
-	double y1 = 0.70*frame_Bmass->GetMaximum();
+	double y1 = 0.60*frame_Bmass->GetMaximum();
 	double y2 = 1.00*frame_Bmass->GetMaximum();
 
 	// Legend: compact, inside plot box
@@ -239,7 +251,7 @@ void fit_data() {
 
 	// ============================== Inset (zoom) ==============================
     // Add an inset at the top-right corner of the main plot (p_top)
-    const double inset_x1 = 0.53, inset_y1 = 0.2, inset_x2 = 0.93, inset_y2 = 0.6; // NDC coordinates
+    const double inset_x1 = 0.53, inset_y1 = 0.17, inset_x2 = 0.93, inset_y2 = 0.57; // NDC coordinates
     const double zoom_low  = 3.85;   // lower edge of zoom window
     const double zoom_high = 3.89;   // upper edge of zoom window
     const int    zoom_bins = 16;     // number of bins in the zoomed region
@@ -259,7 +271,16 @@ void fit_data() {
 
     RooPlot* frame_zoom = B_mass.frame(Range(zoom_low, zoom_high), Bins(zoom_bins));
     frame_zoom->SetTitle("");
-	data.plotOn(frame_zoom, DataError(RooAbsData::SumW2), Name("data_zoom"));
+	data.plotOn(frame_zoom,
+            DataError(RooAbsData::SumW2),
+            XErrorSize(0),            // hide horizontal bar (bin width)
+            Name("data_zoom"));
+	// Make zoom data markers smaller and error bars thinner
+	if (auto hDataZoom = dynamic_cast<RooHist*>(frame_zoom->findObject("data_zoom"))) {
+		hDataZoom->SetMarkerStyle(20);
+		hDataZoom->SetMarkerSize(0.5);
+		hDataZoom->SetLineWidth(1);
+	}
 	tot.plotOn(frame_zoom, LineColor(kBlue), LineStyle(1), Name("all_zoom"));
 	tot.plotOn(frame_zoom, Components(sig_psi2s), LineColor(orange), LineStyle(3), Name("sig_psi2s_zoom"));
 	tot.plotOn(frame_zoom, Components(sig_X),     LineColor(pink),   LineStyle(2), Name("sig_X_zoom"));
@@ -274,13 +295,13 @@ void fit_data() {
     double scale_x = (inset_x2 - inset_x1);
     double scale_y = (inset_y2 - inset_y1);
 
-    frame_zoom->GetXaxis()->SetTitle("m_{J/#psi#pi^{+}#pi^{-}}(GEV)");
+    frame_zoom->GetXaxis()->SetTitle("m_{J/#psi#pi^{+}#pi^{-}}[GeV/c^{2}]");
     frame_zoom->GetYaxis()->SetTitle("Events");
     frame_zoom->GetXaxis()->SetTitleSize(baseTitleSize * scale_x);
     frame_zoom->GetXaxis()->SetLabelSize(baseLabelSize * scale_x);
     frame_zoom->GetYaxis()->SetTitleSize(baseTitleSize * scale_y);
     frame_zoom->GetYaxis()->SetLabelSize(baseLabelSize * scale_y);
-    frame_zoom->GetYaxis()->SetTitleOffset(0.8);
+    frame_zoom->GetYaxis()->SetTitleOffset(1.1);
 
     frame_zoom->Draw();
 
@@ -293,7 +314,7 @@ void fit_data() {
                                     Binning(zoom_bins, zoom_low, zoom_high));
 		if (htemp) {
 			double local_max = htemp->GetMaximum();
-			y_max_box = local_max * 1.2;
+			y_max_box = local_max * 1.1;
 		}
         TBox* box = new TBox(zoom_low, y_min_box, zoom_high, y_max_box);
         box->SetFillStyle(0);
@@ -321,7 +342,7 @@ void fit_data() {
 	line0->Draw("same");
 
 	// Save with a filename that indicates pull is included
-	c_Bmass->SaveAs("./pdf_data/PsiX_data_OPT_zoom_v2.pdf");
+	c_Bmass->SaveAs("./pdf_data_method/method4/PsiX_data_OPT_zoom_v3.pdf");
 
     f->Close();
 }

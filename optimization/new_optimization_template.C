@@ -24,6 +24,8 @@ void optimization_@VAR@() {
         std::cerr << "Failed to get 'tree' from data file." << std::endl;
         return;
     }
+    int yellow = TColor::GetColor(204, 204,   0); 
+	int orange = TColor::GetColor(204, 102,   0); 
 
     // --- MC for X(3872) (original) ---
     TFile *file_MC = TFile::Open("/user/u/u25lekai/work/ppRef/analysis_X/selection/root_files/MC_X3872.root");
@@ -145,12 +147,12 @@ void optimization_@VAR@() {
         g->SetMarkerStyle(ms);
         g->SetMarkerSize(0.9);
         g->SetTitle("");
-        g->GetXaxis()->SetTitle(Form("Cut Value (%s)", var_name.Data()));
-        g->GetYaxis()->SetTitle("FOM (S / #sqrt{S+B})");
-        g->GetXaxis()->SetTitleSize(0.045);
-        g->GetXaxis()->SetTitleOffset(1.1);
-        g->GetYaxis()->SetTitleSize(0.045);
-        g->GetYaxis()->SetTitleOffset(1.2);
+        g->GetXaxis()->SetTitle(Form("%s", var_name.Data()));
+        g->GetYaxis()->SetTitle("FOM");
+        g->GetXaxis()->SetTitleSize(0.04);
+        g->GetXaxis()->SetTitleOffset(1.05);
+        g->GetYaxis()->SetTitleSize(0.04);
+        g->GetYaxis()->SetTitleOffset(1.05);
     };
 
     // Y-range based on BOTH X(3872) and PSI(2S) (so overlay fits)
@@ -163,12 +165,12 @@ void optimization_@VAR@() {
         std::cout << "FOM is " << FOM_max_g << std::endl;
         flag = "g";
 
-        style_graph(graph_g, kBlue+1, 20);            // X(3872)
+        style_graph(graph_g, yellow, 20);            // X(3872)
         graph_g->GetYaxis()->SetRangeUser(0, yMax_combined);
         graph_g->Draw("AL");
 
         // overlay PSI(2S)
-        style_graph(graph_g_psi, kGreen+2, 24);       // PSI(2S)
+        style_graph(graph_g_psi, orange, 24);       // PSI(2S)
         graph_g_psi->Draw("L SAME");
 
         // vertical line and best marker for X(3872)
@@ -184,13 +186,15 @@ void optimization_@VAR@() {
         bestMark->Draw("SAME");
 
         // legend
-        auto leg = new TLegend(0.58, 0.75, 0.89, 0.90); // NDC
+        auto leg = new TLegend(0.58, 0.75, 0.90, 0.90); // NDC
         leg->SetTextSize(0.032);
         leg->SetTextFont(62);
-        leg->AddEntry(graph_g,     "FOM vs cut (X(3872))", "l");
-        leg->AddEntry(graph_g_psi, "FOM vs cut (#psi(2S))", "l");
-        leg->AddEntry((TObject*)0, Form("Best (X): x > %.4f", cut_best_g), "");
-        leg->AddEntry((TObject*)0, Form("Max FOM (X) = %.4f", FOM_max_g), "");
+
+        leg->AddEntry(graph_g,     "X(3872)",  "l");
+        leg->AddEntry(graph_g_psi, "(#psi(2S))", "l");
+        leg->AddEntry((TObject*)0, Form("Best cut : x > %.3f", cut_best_g), "h");
+        leg->AddEntry((TObject*)0, Form("Max FOM = %.3f", FOM_max_g), "h");
+
         leg->Draw();
 
     } else {
@@ -198,12 +202,12 @@ void optimization_@VAR@() {
         std::cout << "FOM is " << FOM_max_l << std::endl;
         flag = "l";
 
-        style_graph(graph_l, kBlue+1, 20);            // X(3872)
+        style_graph(graph_l, yellow, 20);            // X(3872)
         graph_l->GetYaxis()->SetRangeUser(0, yMax_combined);
         graph_l->Draw("AL");
 
         // overlay PSI(2S)
-        style_graph(graph_l_psi, kGreen+2, 24);       // PSI(2S)
+        style_graph(graph_l_psi, orange, 24);       // PSI(2S)
         graph_l_psi->Draw("L SAME");
 
         // vertical line and best marker for X(3872)
@@ -222,10 +226,10 @@ void optimization_@VAR@() {
         auto leg = new TLegend(0.58, 0.75, 0.89, 0.90); // NDC
         leg->SetTextSize(0.032);
         leg->SetTextFont(62);
-        leg->AddEntry(graph_l,     "FOM vs cut (X(3872))", "l");
-        leg->AddEntry(graph_l_psi, "FOM vs cut (#psi(2S))", "l");
-        leg->AddEntry((TObject*)0, Form("Best (X): x < %.4f", cut_best_l), "");
-        leg->AddEntry((TObject*)0, Form("Max FOM (X) = %.4f", FOM_max_l), "");
+        leg->AddEntry(graph_l,     "X(3872)", "l");
+        leg->AddEntry(graph_l_psi, "(#psi(2S))", "l");
+        leg->AddEntry((TObject*)0, Form("Best cut : x < %.3f", cut_best_l), "");
+        leg->AddEntry((TObject*)0, Form("Max FOM = %.3f", FOM_max_l), "");
         leg->Draw();
     }
 
