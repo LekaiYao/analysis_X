@@ -7,16 +7,19 @@
 
 void plot_var() {
     // --------- User-defined variable name ---------
-    TString varName = "B_Qvalueuj";  // Variable to inspect
+    TString varName = "BDT_score";  // Variable to inspect
 
     // --------- Automatically determined variable range ---------
     Float_t var_min = 1e10;
     Float_t var_max = -1e10;
 
     // Open ROOT files
-    TFile *f_data = TFile::Open("/user/u/u25lekai/work/ppRef/analysis_X/selection/root_files/sideband.root");
-    TFile *f_mc   = TFile::Open("/user/u/u25lekai/work/ppRef/analysis_X/selection/root_files/MC_PSI2S.root");
-    TFile *f_mc2  = TFile::Open("/user/u/u25lekai/work/ppRef/analysis_X/selection/root_files/MC_X3872.root");
+    //TFile *f_data = TFile::Open("/user/l/lekai/work/ppRef/analysis_X/selection/root_files/sideband.root");
+    //TFile *f_mc   = TFile::Open("/user/l/lekai/work/ppRef/analysis_X/selection/root_files/MC_PSI2S.root");
+    //TFile *f_mc2  = TFile::Open("/user/l/lekai/work/ppRef/analysis_X/selection/root_files/MC_X3872.root");
+    TFile *f_data = TFile::Open("/user/l/lekai/work/ppRef/analysis_X/TMVA/sideband_X3872_BDT_trainX4.root");
+    TFile *f_mc   = TFile::Open("/user/l/lekai/work/ppRef/analysis_X/TMVA/MC_PSI2S_BDT_trainX4.root");
+    TFile *f_mc2  = TFile::Open("/user/l/lekai/work/ppRef/analysis_X/TMVA/MC_X3872_BDT_trainX4.root");
 
     TTree *tree_data = (TTree*)f_data->Get("tree");
     TTree *tree_mc   = (TTree*)f_mc->Get("tree");
@@ -59,8 +62,8 @@ void plot_var() {
 
     int nBins = 100;
     //Define the region by hand
-    var_min = -0.1;
-    var_max = 0.7;
+    var_min = -0.25;
+    var_max = 0.15;
 
     TH1F *h_data = new TH1F("h_data", varName, nBins, var_min, var_max);
     TH1F *h_mc   = new TH1F("h_mc",   varName, nBins, var_min, var_max);

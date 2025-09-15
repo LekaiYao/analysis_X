@@ -13,8 +13,8 @@
 #include <TMarker.h>
 
 void optimization_@VAR@() {
-    //TFile *file_data = TFile::Open("/user/u/u25lekai/work/ppRef/analysis_X/TMVA/sideband_PSI_BDT_v3test1.root");
-    TFile *file_data = TFile::Open("/user/u/u25lekai/work/ppRef/analysis_X/selection/root_files/sideband.root");
+    TFile *file_data = TFile::Open("/user/l/lekai/work/ppRef/analysis_X/TMVA/sideband_X3872_BDT_trainX4.root");
+    //TFile *file_data = TFile::Open("/user/l/lekai/work/ppRef/analysis_X/selection/root_files/sideband.root");
     if (!file_data || file_data->IsZombie()) {
         std::cerr << "Failed to open data ROOT file." << std::endl;
         return;
@@ -25,9 +25,9 @@ void optimization_@VAR@() {
         return;
     }
 
-    //TFile *file_MC = TFile::Open("/user/u/u25lekai/work/ppRef/analysis_X/TMVA/MC_PSI2S_BDT_v3test1.root");
-    //TFile *file_MC = TFile::Open("/user/u/u25lekai/work/ppRef/analysis_X/selection/root_files/MC_PSI2S.root");
-    TFile *file_MC = TFile::Open("/user/u/u25lekai/work/ppRef/analysis_X/selection/root_files/MC_X3872.root");
+    TFile *file_MC = TFile::Open("/user/l/lekai/work/ppRef/analysis_X/TMVA/MC_X3872_BDT_trainX4.root");
+    //TFile *file_MC = TFile::Open("/user/l/lekai/work/ppRef/analysis_X/selection/root_files/MC_PSI2S.root");
+    //TFile *file_MC = TFile::Open("/user/l/lekai/work/ppRef/analysis_X/selection/root_files/MC_X3872.root");
     if (!file_MC || file_MC->IsZombie()) {
         std::cerr << "Failed to open MC ROOT file." << std::endl;
         return;
@@ -68,9 +68,11 @@ void optimization_@VAR@() {
     TH1F *hist_data = new TH1F("hist_data", "hist_data", nbin, min, max);
     TH1F *hist_MC   = new TH1F("hist_MC",   "hist_MC",   nbin, min, max);
 
-    // Fill histograms from trees
-    tree_data->Draw(Form("%s >> hist_data", var_name.Data()),"B_chi2cl > 0.003 && B_Qvalueuj < 0.2");
-    tree_MC->Draw(Form("%s >> hist_MC", var_name.Data()),"B_chi2cl > 0.003 && B_Qvalueuj < 0.2");
+    // Fill histograms from trees, pre-cuts
+    //tree_data->Draw(Form("%s >> hist_data", var_name.Data()),"B_chi2cl > 0.003 && B_Qvalueuj < 0.2");
+    //tree_MC->Draw(Form("%s >> hist_MC", var_name.Data()),"B_chi2cl > 0.003 && B_Qvalueuj < 0.2");
+    tree_data->Draw(Form("%s >> hist_data", var_name.Data()));
+    tree_MC->Draw(Form("%s >> hist_MC", var_name.Data()));
 
     // Loop over cut positions and compute FOM for both directions
     // Note: we set points starting from index 0; total points used = n_points-1

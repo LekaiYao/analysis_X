@@ -20,7 +20,7 @@
 using namespace RooFit;
 
 void fit_X_fsfb() {
-    TFile *f = TFile::Open("/user/u/u25lekai/work/analysis_X/TMVA/DATA_XPSI_BDT_v2test1.root");
+    TFile *f = TFile::Open("/user/l/lekai/work/ppRef/analysis_X/TMVA/DATA_XPSI_BDT_trainX4.root");
     TTree *tree = (TTree*)f->Get("tree");
     
     float lowBmass=3.75,highBmass=4.0,lowBDTscore=-1.0,highBDTscore=1.0;
@@ -38,7 +38,7 @@ void fit_X_fsfb() {
     RooDataSet data("data", "data", vars,Import(*tree));
 	RooDataSet* newdata = (RooDataSet*)data.reduce("(BDT_score>0.0)");
 
-	//signal of PSI2S
+	//signal of X(3872)
 	RooRealVar mean("mean","mean",3.87,3.83,3.91);
 	RooRealVar sigma1("sigma1","sigma1",0.008,1e-05,0.02);
 	RooGaussian Gaus1("Gaus1","Gaus1",B_mass,mean,sigma1);
@@ -99,7 +99,7 @@ void fit_X_fsfb() {
 	frame_Bmass->Draw();
 	leg1.DrawClone();
 
-	c_Bmass->SaveAs("./pdf_X_fsfb/1Dfitpsi2Smass_datafsfb_v2test1_v1.pdf");
+	c_Bmass->SaveAs("./pdf_X_fsfb/Xmass_fsfb_trainX4_v1.pdf");
 
     f->Close();
 }

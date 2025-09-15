@@ -5,7 +5,7 @@ mkdir -p FOM
 
 TEMPLATE="optimization_template.C"
 
-cat input.txt | while read rows
+cat input_BDT.txt | while read rows
 do
 	var=$(echo $rows | awk 'BEGIN{FS="/"} {print $1}')
 	min=$(echo $rows | awk 'BEGIN{FS="/"} {print $2}')

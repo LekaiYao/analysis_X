@@ -18,11 +18,12 @@
 
 using namespace RooFit;
 
-void fit_data_method1() {
-    TFile *f = TFile::Open("../selection/root_files/DATA_XPSI_cut0.root");
+void fit_data_method4() {
+    TFile *f = TFile::Open("../../TMVA/DATA_XPSI_BDT_trainX4.root");
     TTree *tree = (TTree*)f->Get("tree");
     
     float lowBmass=3.6,highBmass=4.0;
+	double lowBDTscore=-0.000999987,highBDTscore=1.0;
 	//float lowDis=0,highDis=4;//1.92
 	//float lowDis_2D=0,highDis_2D=0.92;//1.92
 	//float lowBalpha=0.0,highBalpha=3.2;
@@ -35,6 +36,7 @@ void fit_data_method1() {
     
     //define variables
     RooRealVar B_mass("B_mass", "B_mass", lowBmass, highBmass);
+	RooRealVar BDT_score("BDT_score", "BDT_score", lowBDTscore, highBDTscore);
 	//RooRealVar B_norm_svpvDistance("B_norm_svpvDistance","B_norm_svpvDistance",lowDis,highDis);
 	//RooRealVar B_norm_svpvDistance_2D("B_norm_svpvDistance_2D","B_norm_svpvDistance_2D",lowDis_2D,highDis_2D);
 	//RooRealVar B_alpha("B_alpha", "B_alpha", lowBalpha, highBalpha);
@@ -46,35 +48,33 @@ void fit_data_method1() {
     //define the RooArgSet of the Dataset
 	RooArgSet vars;
 		vars.add(B_mass);
+		vars.add(BDT_score);
 		//vars.add(B_norm_svpvDistance);
 		//vars.add(B_norm_svpvDistance_2D);
 		//vars.add(B_alpha);
 		//vars.add(B_chi2cl);
-		vars.add(B_Qvalueuj);
-		vars.add(B_trk1dR);
-		vars.add(B_trk2dR);
+		//vars.add(B_Qvalueuj);
+		//vars.add(B_trk1dR);
+		//vars.add(B_trk2dR);
     RooDataSet data("data", "data", vars,Import(*tree));
 	//RooDataSet* newdata = (RooDataSet*)data.reduce("(B_norm_svpvDistance<1.92)");
 	
-	/*
+
 	//signal of Psi(2S)
 	RooRealVar mean_psi2s("mean_psi2s","mean_psi2s",3.69,3.68,3.70);
-	RooRealVar sigma1_psi2s("sigma1_psi2s","sigma1_psi2s",0.006,1e-04,0.01);
+	RooRealVar sigma1_psi2s("sigma1_psi2s","sigma1_psi2s",0.014,1e-03,0.015);
 	RooGaussian Gaus1_psi2s("Gaus1_psi2s","Gaus1_psi2s",B_mass,mean_psi2s,sigma1_psi2s);
-	RooRealVar sigma2_psi2s("sigma2_psi2s","sigma2_psi2s",0.003,5e-05,0.005);
+	RooRealVar sigma2_psi2s("sigma2_psi2s","sigma2_psi2s",0.005,1e-04,0.006);
 	RooGaussian Gaus2_psi2s("Gaus2_psi2s","Gaus2_psi2s",B_mass,mean_psi2s,sigma2_psi2s);
 	RooRealVar frac_psi2s("frac_psi2s","frac_psi2s",0.5,0.2,0.8);
 	RooAddPdf sig_psi2s("sig_psi2s","sig_psi2s",RooArgList(Gaus1_psi2s,Gaus2_psi2s),frac_psi2s);
 
 	//signal of X(3872)
 	RooRealVar mean_X("mean_X","mean_X",3.87,3.86,3.88);
-	RooRealVar sigma1_X("sigma1_X","sigma1_X",0.006,1e-04,0.01);
-	RooGaussian Gaus1_X("Gaus1_X","Gaus1_X",B_mass,mean_X,sigma1_X);
-	RooRealVar sigma2_X("sigma2_X","sigma2_X",0.003,5e-05,0.005);
-	RooGaussian Gaus2_X("Gaus2_X","Gaus2_X",B_mass,mean_X,sigma2_X);
-	RooRealVar frac_X("frac_X","frac_X",0.5,0.2,0.8);
-	RooAddPdf sig_X("sig_X","sig_X",RooArgList(Gaus1_X,Gaus2_X),frac_X);
-	*/
+	RooRealVar sigma_X("sigma_X","sigma_X",0.012,1e-03,0.015);
+	RooGaussian sig_X("sig_X","sig_X",B_mass,mean_X,sigma_X);
+
+	/*
 	//signal of Psi(2S)
 	RooRealVar mean_psi2s("mean_psi2s","mean_psi2s",3.69,3.68,3.70);
 	RooRealVar sigma1("sigma1","sigma1",0.009,1e-03,0.015);
@@ -84,25 +84,18 @@ void fit_data_method1() {
 	RooRealVar frac("frac","frac",0.5,0.2,0.8);
 	RooAddPdf sig_psi2s("sig_psi2s","sig_psi2s",RooArgList(Gaus1_psi2s,Gaus2_psi2s),frac);
 
-	// scaling factor
-	RooRealVar C("C","scaling factor",1.3,0.8,1.8);
-	// scaled sigmas
-	RooFormulaVar sigma1_scaled("sigma1_scaled","@0*@1",RooArgList(C,sigma1));
-	RooFormulaVar sigma2_scaled("sigma2_scaled","@0*@1",RooArgList(C,sigma2));
-
-	// signal of X(3872)
+	//signal of X(3872)
 	RooRealVar mean_X("mean_X","mean_X",3.87,3.86,3.88);
-	RooGaussian Gaus1_X("Gaus1_X","Gaus1_X",B_mass,mean_X,sigma1_scaled);
-	RooGaussian Gaus2_X("Gaus2_X","Gaus2_X",B_mass,mean_X,sigma2_scaled);
+	RooGaussian Gaus1_X("Gaus1_X","Gaus1_X",B_mass,mean_X,sigma1);
+	RooGaussian Gaus2_X("Gaus2_X","Gaus2_X",B_mass,mean_X,sigma2);
 	RooAddPdf sig_X("sig_X","sig_X",RooArgList(Gaus1_X,Gaus2_X),frac);
-
+	*/
 
 
 	// Chebychev polynomial background
-	RooRealVar c1("c1", "coefficient #1", -0.28, -0.5, 0.5);
+	RooRealVar c1("c1", "coefficient #1", -0.29, -0.5, 0.5);
 	RooRealVar c2("c2", "coefficient #2", -0.14, -0.3, 0.3);
 	RooRealVar c3("c3", "coefficient #3", 0.03, -0.3, 0.3);
-	//RooRealVar c4("c4", "coefficient #4", -0.01, -0.3, 0.3);
 	// You can add more coefficients (c3, c4, ...) for higher-order polynomials
 
 	RooChebychev bkg("bkg", "Chebychev background", B_mass, RooArgList(c1, c2, c3));
@@ -353,7 +346,7 @@ void fit_data_method1() {
 	line0->Draw("same");
 
 	// Save with a filename that indicates pull is included
-	c_Bmass->SaveAs("./pdf_data_method/method1/PsiX_data_OPT_zoom_v1.pdf");
+	c_Bmass->SaveAs("./pdf_data_method/method4/PsiX_data_BDT_zoom_v1.pdf");
 
     f->Close();
 }

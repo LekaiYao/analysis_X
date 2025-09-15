@@ -344,7 +344,7 @@ void fit_data_method3() {
 	line0->Draw("same");
 
 	// Save with a filename that indicates pull is included
-	c_Bmass->SaveAs("./pdf_data_method/method3/PsiX_data_OPT_zoom_v3.pdf");
+	c_Bmass->SaveAs("./pdf_data_method/method3/PsiX_data_OPT_zoom_v1.pdf");
 
     f->Close();
 }

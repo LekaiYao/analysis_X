@@ -22,7 +22,7 @@
 using namespace RooFit;
 
 void fit_MC_PSI() {
-    TFile *f = TFile::Open("/user/u/u25lekai/work/ppRef/analysis_X/selection/root_files/MC_PSI2S.root");//change
+    TFile *f = TFile::Open("/user/l/lekai/work/ppRef/analysis_X/selection/root_files/MC_PSI2S.root");//change
     TTree *tree = (TTree*)f->Get("tree");
 
     float lowBmass = 3.66, highBmass = 3.72;
@@ -87,6 +87,7 @@ void fit_MC_PSI() {
     frame_pull->GetYaxis()->SetTitleSize(0.10);
     frame_pull->GetYaxis()->SetTitleOffset(0.45);
     frame_pull->GetYaxis()->SetLabelSize(0.09);
+    frame_pull->GetXaxis()->SetTitle("m_{J/#psi#pi^{+}#pi^{-}}[GeV/c^{2}]");
     frame_pull->GetXaxis()->SetTitleSize(0.12);
     frame_pull->GetXaxis()->SetLabelSize(0.10);
 

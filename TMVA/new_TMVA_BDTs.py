@@ -18,9 +18,9 @@ TMVA.Tools.Instance()               # need to run this two to load up TMVA
 TMVA.PyMethodBase.PyInitialize()    # in PyROOT
 
 # input PATH
-dir = "/user/u/u25lekai/work/ppRef/analysis_X/selection/test_root/"
-data_file = "sideband_PSI_v3test1.root"
-mc_file = "MC_PSI2S_v3test1.root"
+dir = "/user/l/lekai/work/ppRef/analysis_X/selection/test_root/"
+data_file = "sideband_trainX1.root"
+mc_file = "MC_X3872_trainX1.root"
  
 # Open the ROOT files and access the TTree for data and MC
 data = TFile.Open(dir + data_file)
@@ -53,15 +53,12 @@ dataloader = TMVA.DataLoader('dataset/dataset_' + input)
 
 # features to train the BDT (keep as your original)
 dataloader.AddVariable("B_trk1dR")
-dataloader.AddVariable("B_trk2dR")
-dataloader.AddVariable("B_trk1Pt")
-dataloader.AddVariable("B_trk2Pt")
-dataloader.AddVariable("B_trkPtimb")
-# dataloader.AddVariable("B_alpha")
-# dataloader.AddVariable("B_chi2cl")
-# dataloader.AddVariable("B_Qvalueuj")
-# dataloader.AddVariable("B_norm_trk1Dxy")
-# dataloader.AddVariable("B_norm_svpvDistance")
+#dataloader.AddVariable("B_chi2cl")
+#dataloader.AddVariable("B_cos_dtheta")
+#dataloader.AddVariable("B_norm_trk1Dxy")
+#dataloader.AddVariable("B_norm_svpvDistance")
+dataloader.AddVariable("B_Qvalueuj")
+
 
 # NEW: add mass as spectator to monitor mass sculpting
 dataloader.AddSpectator("B_mass")

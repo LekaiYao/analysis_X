@@ -1,0 +1,222 @@
+nohup: ignoring input
+DataSetInfo              : [dataset/dataset_trainX4] : Added class "Signal"
+                         : Add Tree tree of type Signal with 7554 events
+DataSetInfo              : [dataset/dataset_trainX4] : Added class "Background"
+                         : Add Tree tree of type Background with 473605 events
+Factory                  : Booking method: [1mBDTs[0m
+                         : 
+BDTs                     : [dataset/dataset_trainX4] : Create Transformation "Decorrelate" with events from all classes.
+                         : 
+                         : Transformation, Variable selection : 
+                         : Input : variable 'B_trk1dR' <---> Output : variable 'B_trk1dR'
+                         : Input : variable 'B_Qvalueuj' <---> Output : variable 'B_Qvalueuj'
+                         : Rebuilding Dataset dataset/dataset_trainX4
+                         : Building event vectors for type 2 Signal
+                         : Dataset[dataset/dataset_trainX4] :  create input formulas for tree tree
+                         : Building event vectors for type 2 Background
+                         : Dataset[dataset/dataset_trainX4] :  create input formulas for tree tree
+DataSetFactory           : [dataset/dataset_trainX4] : Number of events in input trees
+                         : 
+                         : 
+                         : Number of training and testing events
+                         : ---------------------------------------------------------------------------
+                         : Signal     -- training events            : 5287
+                         : Signal     -- testing events             : 2267
+                         : Signal     -- training and testing events: 7554
+                         : Background -- training events            : 10000
+                         : Background -- testing events             : 463605
+                         : Background -- training and testing events: 473605
+                         : 
+DataSetInfo              : Correlation matrix (Signal):
+                         : -------------------------------
+                         :             B_trk1dR B_Qvalueuj
+                         :   B_trk1dR:   +1.000     -0.053
+                         : B_Qvalueuj:   -0.053     +1.000
+                         : -------------------------------
+DataSetInfo              : Correlation matrix (Background):
+                         : -------------------------------
+                         :             B_trk1dR B_Qvalueuj
+                         :   B_trk1dR:   +1.000     -0.035
+                         : B_Qvalueuj:   -0.035     +1.000
+                         : -------------------------------
+DataSetFactory           : [dataset/dataset_trainX4] :  
+                         : 
+Factory                  : [1mTrain all methods[0m
+Factory                  : [dataset/dataset_trainX4] : Create Transformation "I" with events from all classes.
+                         : 
+                         : Transformation, Variable selection : 
+                         : Input : variable 'B_trk1dR' <---> Output : variable 'B_trk1dR'
+                         : Input : variable 'B_Qvalueuj' <---> Output : variable 'B_Qvalueuj'
+Factory                  : [dataset/dataset_trainX4] : Create Transformation "D" with events from all classes.
+                         : 
+                         : Transformation, Variable selection : 
+                         : Input : variable 'B_trk1dR' <---> Output : variable 'B_trk1dR'
+                         : Input : variable 'B_Qvalueuj' <---> Output : variable 'B_Qvalueuj'
+Factory                  : [dataset/dataset_trainX4] : Create Transformation "P" with events from all classes.
+                         : 
+                         : Transformation, Variable selection : 
+                         : Input : variable 'B_trk1dR' <---> Output : variable 'B_trk1dR'
+                         : Input : variable 'B_Qvalueuj' <---> Output : variable 'B_Qvalueuj'
+Factory                  : [dataset/dataset_trainX4] : Create Transformation "G" with events from all classes.
+                         : 
+                         : Transformation, Variable selection : 
+                         : Input : variable 'B_trk1dR' <---> Output : variable 'B_trk1dR'
+                         : Input : variable 'B_Qvalueuj' <---> Output : variable 'B_Qvalueuj'
+Factory                  : [dataset/dataset_trainX4] : Create Transformation "D" with events from all classes.
+                         : 
+                         : Transformation, Variable selection : 
+                         : Input : variable 'B_trk1dR' <---> Output : variable 'B_trk1dR'
+                         : Input : variable 'B_Qvalueuj' <---> Output : variable 'B_Qvalueuj'
+TFHandler_Factory        :   Variable          Mean          RMS   [        Min          Max ]
+                         : ---------------------------------------------------------------------
+                         :   B_trk1dR:     0.34032     0.19743   [   0.0014769      1.2834 ]
+                         : B_Qvalueuj:    0.089341    0.063243   [    -0.15178     0.20000 ]
+                         : ---------------------------------------------------------------------
+                         : Preparing the Decorrelation transformation...
+TFHandler_Factory        :   Variable          Mean          RMS   [        Min          Max ]
+                         : ---------------------------------------------------------------------
+                         :   B_trk1dR:      1.7218      1.0000   [   0.0054191      6.5000 ]
+                         : B_Qvalueuj:      1.4053      1.0000   [     -2.4073      3.1585 ]
+                         : ---------------------------------------------------------------------
+                         : Preparing the Principle Component (PCA) transformation...
+TFHandler_Factory        :   Variable          Mean          RMS   [        Min          Max ]
+                         : ---------------------------------------------------------------------
+                         :   B_trk1dR: -2.2742e-11     0.19743   [    -0.33883     0.94297 ]
+                         : B_Qvalueuj: -6.1259e-12    0.063242   [    -0.11105     0.24112 ]
+                         : ---------------------------------------------------------------------
+                         : Preparing the Gaussian transformation...
+                         : Preparing the Decorrelation transformation...
+TFHandler_Factory        :   Variable          Mean          RMS   [        Min          Max ]
+                         : ---------------------------------------------------------------------
+                         :   B_trk1dR:   0.0036228      1.0000   [     -3.3064      5.7486 ]
+                         : B_Qvalueuj:   0.0036985      1.0000   [     -3.3084      5.7614 ]
+                         : ---------------------------------------------------------------------
+                         : Ranking input variables (method unspecific)...
+IdTransformation         : Ranking result (top variable is best ranked)
+                         : -----------------------------------
+                         : Rank : Variable   : Separation
+                         : -----------------------------------
+                         :    1 : B_Qvalueuj : 1.729e-01
+                         :    2 : B_trk1dR   : 4.429e-02
+                         : -----------------------------------
+Factory                  : Train method: BDTs for Classification
+                         : 
+                         : Preparing the Decorrelation transformation...
+TFHandler_BDTs           :   Variable          Mean          RMS   [        Min          Max ]
+                         : ---------------------------------------------------------------------
+                         :   B_trk1dR:      1.7218      1.0000   [   0.0054191      6.5000 ]
+                         : B_Qvalueuj:      1.4053      1.0000   [     -2.4073      3.1585 ]
+                         : ---------------------------------------------------------------------
+BDTs                     : #events: (reweighted) sig: 7643.5 bkg: 7643.5
+                         : #events: (unweighted) sig: 5287 bkg: 10000
+                         : Training 500 Decision Trees ... patience please
+0%, time left: unknown
+6%, time left: 3 sec
+12%, time left: 3 sec
+19%, time left: 3 sec
+25%, time left: 2 sec
+31%, time left: 2 sec
+37%, time left: 2 sec
+44%, time left: 2 sec
+50%, time left: 1 sec
+56%, time left: 1 sec
+62%, time left: 1 sec
+69%, time left: 1 sec
+75%, time left: 0 sec
+81%, time left: 0 sec
+87%, time left: 0 sec
+94%, time left: 0 sec
+                         : Elapsed time for training with 15287 events: 3.8 sec         
+BDTs                     : [dataset/dataset_trainX4] : Evaluation of BDTs on training sample (15287 events)
+0%, time left: unknown
+6%, time left: 1 sec
+12%, time left: 0 sec
+18%, time left: 0 sec
+25%, time left: 0 sec
+31%, time left: 0 sec
+37%, time left: 0 sec
+44%, time left: 0 sec
+50%, time left: 0 sec
+56%, time left: 0 sec
+62%, time left: 0 sec
+69%, time left: 0 sec
+75%, time left: 0 sec
+81%, time left: 0 sec
+88%, time left: 0 sec
+94%, time left: 0 sec
+                         : Elapsed time for evaluation of 15287 events: 0.668 sec       
+                         : Creating xml weight file: [0;36mdataset/dataset_trainX4/weights/TMVAClassification_BDTs.weights.xml[0m
+                         : Creating standalone class: [0;36mdataset/dataset_trainX4/weights/TMVAClassification_BDTs.class.C[0m
+                         : dataset/dataset_trainX4/results/rootfiles/TMVA_BDT.root:/dataset/dataset_trainX4/Method_BDT/BDTs
+Factory                  : Training finished
+                         : 
+                         : Ranking input variables (method specific)...
+BDTs                     : Ranking result (top variable is best ranked)
+                         : --------------------------------------------
+                         : Rank : Variable   : Variable Importance
+                         : --------------------------------------------
+                         :    1 : B_Qvalueuj : 5.229e-01
+                         :    2 : B_trk1dR   : 4.771e-01
+                         : --------------------------------------------
+Factory                  : === Destroy and recreate all methods via weight files for testing ===
+                         : 
+                         : Reading weight file: [0;36mdataset/dataset_trainX4/weights/TMVAClassification_BDTs.weights.xml[0m
+Factory                  : [1mTest all methods[0m
+Factory                  : Test method: BDTs for Classification performance
+                         : 
+BDTs                     : [dataset/dataset_trainX4] : Evaluation of BDTs on testing sample (465872 events)
+0%, time left: unknown
+6%, time left: 15 sec
+12%, time left: 14 sec
+18%, time left: 13 sec
+25%, time left: 12 sec
+31%, time left: 11 sec
+37%, time left: 10 sec
+43%, time left: 9 sec
+50%, time left: 8 sec
+56%, time left: 7 sec
+62%, time left: 6 sec
+68%, time left: 5 sec
+75%, time left: 4 sec
+81%, time left: 3 sec
+87%, time left: 2 sec
+93%, time left: 1 sec
+                         : Elapsed time for evaluation of 465872 events: 17.1 sec       
+Factory                  : [1mEvaluate all methods[0m
+Factory                  : Evaluate classifier: BDTs
+                         : 
+TFHandler_BDTs           :   Variable          Mean          RMS   [        Min          Max ]
+                         : ---------------------------------------------------------------------
+                         :   B_trk1dR:      1.7946      1.0868   [  -0.0022679      7.2372 ]
+                         : B_Qvalueuj:      1.6722     0.95146   [     -2.4421      3.1616 ]
+                         : ---------------------------------------------------------------------
+BDTs                     : [dataset/dataset_trainX4] : Loop over test events and fill histograms with classifier response...
+                         : 
+TFHandler_BDTs           :   Variable          Mean          RMS   [        Min          Max ]
+                         : ---------------------------------------------------------------------
+                         :   B_trk1dR:      1.7946      1.0868   [  -0.0022679      7.2372 ]
+                         : B_Qvalueuj:      1.6722     0.95146   [     -2.4421      3.1616 ]
+                         : ---------------------------------------------------------------------
+                         : 
+                         : Evaluation results ranked by best signal efficiency and purity (area)
+                         : -------------------------------------------------------------------------------------------------------------------
+                         : DataSet       MVA                       
+                         : Name:         Method:          ROC-integ
+                         : dataset/dataset_trainX4 BDTs           : 0.752
+                         : -------------------------------------------------------------------------------------------------------------------
+                         : 
+                         : Testing efficiency compared to training efficiency (overtraining check)
+                         : -------------------------------------------------------------------------------------------------------------------
+                         : DataSet              MVA              Signal efficiency: from test sample (from training sample) 
+                         : Name:                Method:          @B=0.01             @B=0.10            @B=0.30   
+                         : -------------------------------------------------------------------------------------------------------------------
+                         : dataset/dataset_trainX4 BDTs           : 0.040 (0.049)       0.328 (0.338)      0.696 (0.706)
+                         : -------------------------------------------------------------------------------------------------------------------
+                         : 
+Dataset:dataset/datase...: Created tree 'TestTree' with 465872 events
+                         : 
+Dataset:dataset/datase...: Created tree 'TrainTree' with 15287 events
+                         : 
+Factory                  : [1mThank you for using TMVA![0m
+                         : [1mFor citation information, please visit: http://tmva.sf.net/citeTMVA.html[0m
+Info in <TCanvas::Print>: png file dataset/dataset_trainX4/plots/ROC_ClassificationBDT.png has been created

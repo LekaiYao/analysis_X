@@ -59,7 +59,7 @@ void fit_data_method2() {
 
 	//signal of Psi(2S)
 	RooRealVar mean_psi2s("mean_psi2s","mean_psi2s",3.69,3.68,3.70);
-	RooRealVar sigma1_psi2s("sigma1_psi2s","sigma1_psi2s",0.01,1e-03,0.015);
+	RooRealVar sigma1_psi2s("sigma1_psi2s","sigma1_psi2s",0.009,1e-03,0.015);
 	RooGaussian Gaus1_psi2s("Gaus1_psi2s","Gaus1_psi2s",B_mass,mean_psi2s,sigma1_psi2s);
 	RooRealVar sigma2_psi2s("sigma2_psi2s","sigma2_psi2s",0.004,1e-04,0.006);
 	RooGaussian Gaus2_psi2s("Gaus2_psi2s","Gaus2_psi2s",B_mass,mean_psi2s,sigma2_psi2s);
@@ -68,9 +68,9 @@ void fit_data_method2() {
 
 	//signal of X(3872)
 	RooRealVar mean_X("mean_X","mean_X",3.87,3.86,3.88);
-	RooRealVar sigma1_X("sigma1_X","sigma1_X",0.01,1e-03,0.015);
+	RooRealVar sigma1_X("sigma1_X","sigma1_X",0.014,1e-03,0.02);
 	RooGaussian Gaus1_X("Gaus1_X","Gaus1_X",B_mass,mean_X,sigma1_X);
-	RooRealVar sigma2_X("sigma2_X","sigma2_X",0.004,1e-04,0.006);
+	RooRealVar sigma2_X("sigma2_X","sigma2_X",0.006,1e-03,0.01);
 	RooGaussian Gaus2_X("Gaus2_X","Gaus2_X",B_mass,mean_X,sigma2_X);
 	RooRealVar frac_X("frac_X","frac_X",0.5,0.2,0.8);
 	RooAddPdf sig_X("sig_X","sig_X",RooArgList(Gaus1_X,Gaus2_X),frac_X);
@@ -97,15 +97,15 @@ void fit_data_method2() {
 	RooRealVar c1("c1", "coefficient #1", -0.28, -0.5, 0.5);
 	RooRealVar c2("c2", "coefficient #2", -0.14, -0.3, 0.3);
 	RooRealVar c3("c3", "coefficient #3", 0.03, -0.3, 0.3);
-	RooRealVar c4("c4", "coefficient #4", -0.01, -0.3, 0.3);
+	//RooRealVar c4("c4", "coefficient #4", -0.01, -0.3, 0.3);
 	// You can add more coefficients (c3, c4, ...) for higher-order polynomials
 
-	RooChebychev bkg("bkg", "Chebychev background", B_mass, RooArgList(c1, c2, c3, c4));
+	RooChebychev bkg("bkg", "Chebychev background", B_mass, RooArgList(c1, c2, c3));
 
 	//normalization to get n_events
 	RooRealVar n_sig_psi2s = RooRealVar("n_sig_psi2s","n_sig_psi2s",30000,0,N);
 	RooRealVar n_sig_X = RooRealVar("n_sig_X","n_sig_X",3000,0,N);
-	RooRealVar n_bkg = RooRealVar("n_bkg","n_bkg",40000,0,N);
+	RooRealVar n_bkg = RooRealVar("n_bkg","n_bkg",240000,0,N);
 
 	RooExtendPdf sige_psi2s("sige_psi2s","sige_psi2s",sig_psi2s,n_sig_psi2s);
 	RooExtendPdf sige_X("sige_X","sige_X",sig_X,n_sig_X);
@@ -348,7 +348,7 @@ void fit_data_method2() {
 	line0->Draw("same");
 
 	// Save with a filename that indicates pull is included
-	c_Bmass->SaveAs("./pdf_data_method/method2/PsiX_data_OPT_zoom_v3.pdf");
+	c_Bmass->SaveAs("./pdf_data_method/method2/PsiX_data_OPT_zoom_v1.pdf");
 
     f->Close();
 }

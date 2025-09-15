@@ -92,9 +92,10 @@ void fit_data_method4() {
 	// Chebychev polynomial background
 	RooRealVar c1("c1", "coefficient #1", -0.29, -0.5, 0.5);
 	RooRealVar c2("c2", "coefficient #2", -0.14, -0.3, 0.3);
+	RooRealVar c3("c3", "coefficient #3", 0.03, -0.3, 0.3);
 	// You can add more coefficients (c3, c4, ...) for higher-order polynomials
 
-	RooChebychev bkg("bkg", "Chebychev background", B_mass, RooArgList(c1, c2));
+	RooChebychev bkg("bkg", "Chebychev background", B_mass, RooArgList(c1, c2, c3));
 
 	//normalization to get n_events
 	RooRealVar n_sig_psi2s = RooRealVar("n_sig_psi2s","n_sig_psi2s",30000,0,N);
@@ -342,7 +343,7 @@ void fit_data_method4() {
 	line0->Draw("same");
 
 	// Save with a filename that indicates pull is included
-	c_Bmass->SaveAs("./pdf_data_method/method4/PsiX_data_OPT_zoom_v3.pdf");
+	c_Bmass->SaveAs("./pdf_data_method/method4/PsiX_data_OPT_zoom_v1.pdf");
 
     f->Close();
 }

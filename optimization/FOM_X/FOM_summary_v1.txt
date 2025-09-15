@@ -10,3 +10,7 @@ The best cut for B_chi2cl is greater than 0.0356 FOM_max=8.66152
 The range of B_chi2cl is [ 0 , 0.1 ]
 The best cut for B_Qvalueuj is less than 0.095 FOM_max=10.2444
 The range of B_Qvalueuj is [ -0.2 , 1 ]
+The best cut for BDT_score is less than -0.2 FOM_max=0
+The range of BDT_score is [ -0.2 , 0.1 ]
+The best cut for BDT_score is greater than -0.000999987 FOM_max=10.7162
+The range of BDT_score is [ -0.2 , 0.1 ]

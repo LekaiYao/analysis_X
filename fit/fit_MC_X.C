@@ -18,7 +18,7 @@
 using namespace RooFit;
 
 void fit_MC_X() {
-    TFile *f = TFile::Open("/user/u/u25lekai/work/ppRef/analysis_X/selection/root_files/MC_X3872.root");
+    TFile *f = TFile::Open("/user/l/lekai/work/ppRef/analysis_X/selection/root_files/MC_X3872.root");
     TTree *tree = (TTree*)f->Get("tree");
     
     float lowBmass=3.84,highBmass=3.90;
@@ -35,7 +35,7 @@ void fit_MC_X() {
 	
 	//signal
 	RooRealVar mean("mean","mean",3.87,3.86,3.88);
-	RooRealVar sigma1("sigma1","sigma1",0.005,1e-05,0.01);
+	RooRealVar sigma1("sigma1","sigma1",0.005,1e-05,0.02);
 	RooGaussian Gaus1("Gaus1","Gaus1",B_mass,mean,sigma1);
 	RooRealVar sigma2("sigma2","sigma2",0.0003,1e-05,0.006);
 	RooGaussian Gaus2("Gaus2","Gaus2",B_mass,mean,sigma2);
@@ -88,6 +88,7 @@ void fit_MC_X() {
     frame_pull->GetYaxis()->SetTitleSize(0.10);
     frame_pull->GetYaxis()->SetTitleOffset(0.45);
     frame_pull->GetYaxis()->SetLabelSize(0.09);
+    frame_pull->GetXaxis()->SetTitle("m_{J/#psi#pi^{+}#pi^{-}}[GeV/c^{2}]");
     frame_pull->GetXaxis()->SetTitleSize(0.12);
     frame_pull->GetXaxis()->SetLabelSize(0.10);
 
